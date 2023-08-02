@@ -1,8 +1,8 @@
 export default function Default() {
     return (
-        <div data-mainFeedbacks-default>
+        <section data-mainfeedbacks-default>
 
-        </div>
+        </section>
     )
 
 }

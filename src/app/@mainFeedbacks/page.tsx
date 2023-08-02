@@ -1,7 +1,7 @@
 export default function Page() {
     return (
-        <div data-mainFeedbacks-page>
+        <section data-mainfeedbacks-page className="basis-[825px]">
             
-        </div>
+        </section>
     )
 }

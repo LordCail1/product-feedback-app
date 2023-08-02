@@ -1,6 +1,7 @@
 import React from "react"
 import "./globals.css"
 import type { Metadata } from "next"
+import ReduxProvider from "./providers/ReduxProvider"
 
 export const metadata: Metadata = {
 	title: "Product Feedback",
@@ -20,11 +21,13 @@ export default function RootLayout({
 }: Props) {
 	return (
 		<html lang="en">
-			<body>
-				{children}
-				{mainFeedbacks}
-				{optionsMenu}
-			</body>
+			<ReduxProvider>
+				<body className="flex h-screen p-40 justify-center items-center bg-ghost_white">
+					{children}
+					{optionsMenu}
+					{mainFeedbacks}
+				</body>
+			</ReduxProvider>
 		</html>
 	)
 }
