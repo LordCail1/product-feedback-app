@@ -12,7 +12,7 @@ export default function Layout({
 	roadmap,
 }: Props) {
 	return (
-		<section className="flex basis-[255px] shrink-0">
+		<section className="flex basis-[255px] shrink-0 flex-col">
 			{feedbackBoardTitle}
 			{category}
 			{roadmap}

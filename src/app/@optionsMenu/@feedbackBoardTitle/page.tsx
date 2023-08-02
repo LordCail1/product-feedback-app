@@ -3,7 +3,7 @@ import desktopBackgroundHeaderImage from "@/assets/desktopBackgroundHeaderImage.
 
 export default function Page() {
 	return (
-		<div className="relative h-32 basis-[255px]">
+		<div className="relative h-32 basis-[137px] mb-6">
 			<Image
 				src={desktopBackgroundHeaderImage}
 				alt=""

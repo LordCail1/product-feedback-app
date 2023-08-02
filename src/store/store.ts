@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import filterSliceReducer from '../features/filterSlice'
+import filterSliceReducer from '../features/categorySlice'
 
 export const store = configureStore({
     reducer: filterSliceReducer

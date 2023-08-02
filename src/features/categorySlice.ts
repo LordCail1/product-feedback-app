@@ -12,15 +12,16 @@ const initialState: InitialState = {
 	},
 }
 
-const filterSlice = createSlice({
+const categorySlice = createSlice({
 	name: "filter",
 	initialState,
 	reducers: {
-		changeFilter: (state, action: PayloadAction<Category>) => {
+		changeCategory: (state, action: PayloadAction<Category>) => {
+			console.log('this played')
 			state.value.category = action.payload
 		},
 	},
 })
 
-export default filterSlice.reducer
-export const { changeFilter } = filterSlice.actions
+export default categorySlice.reducer
+export const { changeCategory } = categorySlice.actions
