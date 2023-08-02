@@ -2,13 +2,13 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 
 type InitialState = {
 	value: {
-		filter: Filter
+		category: Category
 	}
 }
 
 const initialState: InitialState = {
 	value: {
-		filter: "All",
+		category: "all",
 	},
 }
 
@@ -16,8 +16,8 @@ const filterSlice = createSlice({
 	name: "filter",
 	initialState,
 	reducers: {
-		changeFilter: (state, action: PayloadAction<Filter>) => {
-			state.value.filter = action.payload
+		changeFilter: (state, action: PayloadAction<Category>) => {
+			state.value.category = action.payload
 		},
 	},
 })

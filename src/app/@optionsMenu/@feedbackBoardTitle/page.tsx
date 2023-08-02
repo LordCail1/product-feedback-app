@@ -1,7 +1,21 @@
+import Image from "next/image"
+import desktopBackgroundHeaderImage from "@/assets/desktopBackgroundHeaderImage.png"
+
 export default function Page() {
-    return (
-        <div>
-            
-        </div>
-    )
+	return (
+		<div className="relative h-32 basis-[255px]">
+			<Image
+				src={desktopBackgroundHeaderImage}
+				alt=""
+				fill
+				className="-z-10 rounded-xl"
+			/>
+			<h2 className="ml-6 mt-16 text-xl font-bold text-white">
+				Frontend Mentor
+			</h2>
+			<span className="ml-6 inline-block text-sm font-medium text-white opacity-75">
+				Feedback Board
+			</span>
+		</div>
+	)
 }

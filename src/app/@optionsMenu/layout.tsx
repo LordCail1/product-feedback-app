@@ -2,19 +2,19 @@ import React from "react"
 
 type Props = {
 	feedbackBoardTitle: React.ReactNode
-	options: React.ReactNode
+	category: React.ReactNode
 	roadmap: React.ReactNode
 }
 
 export default function Layout({
 	feedbackBoardTitle,
-	options,
+	category,
 	roadmap,
 }: Props) {
 	return (
-		<section className="flex basis-[255px]">
+		<section className="flex basis-[255px] shrink-0">
 			{feedbackBoardTitle}
-			{options}
+			{category}
 			{roadmap}
 		</section>
 	)
