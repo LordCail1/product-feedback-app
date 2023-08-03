@@ -1,7 +1,30 @@
 import Image from "next/image"
 import desktopBackgroundHeaderImage from "@/assets/desktopBackgroundHeaderImage.png"
+import connectMongoose from "@/libs/connectMongoose"
+import User from "@/models/userSchema"
+import { HydratedDocument } from "mongoose"
 
-export default function Page() {
+export default async function Page() {
+	try {
+		await connectMongoose()
+		const user: HydratedDocument<User> = await new User({
+			image: "onetwothree",
+			name: 533,
+			username: "john"
+		})
+		user.name = 'timmy'
+		await user.save()
+		console.log('succesfully created a user in the database!')
+	} catch (error) {
+		console.log('failed to create user in the database.', error)
+	}
+
+
+
+
+	
+
+
 	return (
 		<div className="relative h-32 basis-[137px] mb-6">
 			<Image

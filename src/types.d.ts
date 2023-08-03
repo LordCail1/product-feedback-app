@@ -17,6 +17,7 @@ type Comment = {
     id: number
     content: string
     user: User
+    replies?: Comment[]
 }
 
 type User= {

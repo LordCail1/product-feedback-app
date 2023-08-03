@@ -1,0 +1,111 @@
+.
+├── .eslintrc.json
+├── .gitignore
+├── .vscode
+│   └── settings.json
+├── Dockerfile
+├── README.md
+├── docker-compose.yml
+├── frontend-mentor_resources
+│   └── product-feedback-app
+│       ├── .DS_Store
+│       ├── .gitignore
+│       ├── README-template.md
+│       ├── README.md
+│       ├── preview.jpg
+│       └── starter-code
+│           ├── .DS_Store
+│           ├── .gitignore
+│           ├── assets
+│           │   ├── favicon-32x32.png
+│           │   ├── shared
+│           │   │   ├── icon-arrow-down.svg
+│           │   │   ├── icon-arrow-left.svg
+│           │   │   ├── icon-arrow-up.svg
+│           │   │   ├── icon-check.svg
+│           │   │   ├── icon-comments.svg
+│           │   │   ├── icon-edit-feedback.svg
+│           │   │   ├── icon-new-feedback.svg
+│           │   │   ├── icon-plus.svg
+│           │   │   └── mobile
+│           │   │       ├── icon-close.svg
+│           │   │       └── icon-hamburger.svg
+│           │   ├── suggestions
+│           │   │   ├── desktop
+│           │   │   │   └── desktopBackgroundHeaderImage.png
+│           │   │   ├── icon-suggestions.svg
+│           │   │   ├── illustration-empty.svg
+│           │   │   ├── mobile
+│           │   │   │   └── background-header.png
+│           │   │   └── tablet
+│           │   │       └── background-header.png
+│           │   └── user-images
+│           │       ├── image-anne.jpg
+│           │       ├── image-elijah.jpg
+│           │       ├── image-george.jpg
+│           │       ├── image-jackson.jpg
+│           │       ├── image-james.jpg
+│           │       ├── image-javier.jpg
+│           │       ├── image-judah.jpg
+│           │       ├── image-roxanne.jpg
+│           │       ├── image-ryan.jpg
+│           │       ├── image-suzanne.jpg
+│           │       ├── image-thomas.jpg
+│           │       ├── image-victoria.jpg
+│           │       └── image-zena.jpg
+│           ├── data.json
+│           ├── data_v2.json
+│           ├── feedback-detail.html
+│           ├── feedback-edit.html
+│           ├── feedback-new.html
+│           ├── index.html
+│           └── roadmap.html
+├── next-env.d.ts
+├── next.config.js
+├── package-lock.json
+├── package.json
+├── postcss.config.js
+├── public
+│   ├── next.svg
+│   └── vercel.svg
+├── src
+│   ├── app
+│   │   ├── @mainFeedbacks
+│   │   │   ├── default.tsx
+│   │   │   └── page.tsx
+│   │   ├── @optionsMenu
+│   │   │   ├── @category
+│   │   │   │   ├── default.tsx
+│   │   │   │   └── page.tsx
+│   │   │   ├── @feedbackBoardTitle
+│   │   │   │   └── page.tsx
+│   │   │   ├── @roadmap
+│   │   │   │   ├── default.tsx
+│   │   │   │   └── page.tsx
+│   │   │   ├── default.tsx
+│   │   │   ├── layout.tsx
+│   │   │   └── page.tsx
+│   │   ├── components
+│   │   │   └── CategoryBtn
+│   │   │       └── CategoryBtn.tsx
+│   │   ├── globals.css
+│   │   ├── icon.png
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   ├── assets
+│   │   ├── colors.ts
+│   │   └── desktopBackgroundHeaderImage.png
+│   ├── features
+│   │   └── categorySlice.ts
+│   ├── hooks
+│   │   └── redux
+│   │       └── reduxHooks.ts
+│   ├── models
+│   ├── providers
+│   │   └── ReduxProvider.tsx
+│   ├── store
+│   │   └── store.ts
+│   └── types.d.ts
+├── tailwind.config.js
+├── tree_structure.txt
+└── tsconfig.json
