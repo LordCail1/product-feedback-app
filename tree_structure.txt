@@ -85,6 +85,8 @@
 │   │   │   ├── default.tsx
 │   │   │   ├── layout.tsx
 │   │   │   └── page.tsx
+│   │   ├── api
+│   │   │   └── route.ts
 │   │   ├── components
 │   │   │   └── CategoryBtn
 │   │   │       └── CategoryBtn.tsx
@@ -100,7 +102,12 @@
 │   ├── hooks
 │   │   └── redux
 │   │       └── reduxHooks.ts
+│   ├── libs
+│   │   └── connectMongoose.ts
 │   ├── models
+│   │   ├── commentSchema.ts
+│   │   ├── productRequestSchema.ts
+│   │   └── userSchema.ts
 │   ├── providers
 │   │   └── ReduxProvider.tsx
 │   ├── store
