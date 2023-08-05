@@ -1,3 +1,4 @@
+import { User } from "@/types"
 import mongoose, { Schema } from "mongoose"
 
 export const userSchema = new Schema<User>({
@@ -6,8 +7,7 @@ export const userSchema = new Schema<User>({
 	username: String,
 })
 
+const UserModel =
+	mongoose.models.User || mongoose.model<User>("User", userSchema)
 
-
-const User = mongoose.models.User || mongoose.model<User>("User", userSchema)
-
-export default User
+export default UserModel

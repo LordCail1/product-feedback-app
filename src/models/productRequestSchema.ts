@@ -10,6 +10,6 @@ const productRequestSchema = new Schema({
     comments: [{type: Schema.Types.ObjectId, ref: "Comment"}]
 })
 
-const ProductRequest = mongoose.models.ProductRequest || mongoose.model("ProductRequest", productRequestSchema)
+const ProductRequestModel = mongoose.models.ProductRequest || mongoose.model("ProductRequest", productRequestSchema)
 
-export default ProductRequest
+export default ProductRequestModel

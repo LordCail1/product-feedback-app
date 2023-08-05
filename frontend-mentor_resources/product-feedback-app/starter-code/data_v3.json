@@ -1,0 +1,332 @@
+{
+	"users": [
+		{
+			"image": "./assets/user-images/image-suzanne.jpg",
+			"name": "Suzanne Chang",
+			"username": "upbeat1811",
+			"_id": "1e8a53e3-7a29-48d4-b601-89d6b4ce92c0"
+		},
+		{
+			"image": "./assets/user-images/image-thomas.jpg",
+			"name": "Thomas Hood",
+			"username": "brawnybrave",
+			"_id": "cdf7ec25-3041-48ca-b49a-183d099a8c15"
+		},
+		{
+			"image": "./assets/user-images/image-elijah.jpg",
+			"name": "Elijah Moss",
+			"username": "hexagon.bestagon",
+			"_id": "e08ce37d-9c7a-465b-849b-f14d35d3c64a"
+		},
+		{
+			"image": "./assets/user-images/image-james.jpg",
+			"name": "James Skinner",
+			"username": "hummingbird1",
+			"_id": "d5212e02-57d6-4ee0-92d6-438cbf1c1c47"
+		},
+		{
+			"image": "./assets/user-images/image-anne.jpg",
+			"name": "Anne Valentine",
+			"username": "annev1990",
+			"_id": "8bfe7d1b-a0dd-442e-b8ff-5378c1aec37f"
+		},
+		{
+			"image": "./assets/user-images/image-ryan.jpg",
+			"name": "Ryan Welles",
+			"username": "voyager.344",
+			"_id": "f29b09d0-c321-4fa6-a5b0-74caeae72d1d"
+		},
+		{
+			"image": "./assets/user-images/image-george.jpg",
+			"name": "George Partridge",
+			"username": "soccerviewer8",
+			"_id": "289a5ee6-903e-4b7e-9631-24fa96870fe9"
+		},
+		{
+			"image": "./assets/user-images/image-javier.jpg",
+			"name": "Javier Pollard",
+			"username": "warlikeduke",
+			"_id": "6205b74f-8b7e-49ba-94bf-e80eb0b46e56"
+		},
+		{
+			"image": "./assets/user-images/image-roxanne.jpg",
+			"name": "Roxanne Travis",
+			"username": "peppersprime32",
+			"_id": "bf6decf3-b770-481e-8c19-4ff525c8250f"
+		},
+		{
+			"image": "./assets/user-images/image-victoria.jpg",
+			"name": "Victoria Mejia",
+			"username": "arlen_the_marlin",
+			"_id": "302faef1-a448-4ece-bd86-5be566c9654f"
+		},
+		{
+			"image": "./assets/user-images/image-zena.jpg",
+			"name": "Zena Kelley",
+			"username": "velvetround",
+			"_id": "01e641db-eb79-49a7-9d5c-b220f1df0b64"
+		},
+		{
+			"image": "./assets/user-images/image-jackson.jpg",
+			"name": "Jackson Barker",
+			"username": "countryspirit",
+			"_id": "e7804763-4813-4056-878b-65d014ec2600"
+		},
+		{
+			"image": "./assets/user-images/image-victoria.jpg",
+			"name": "Victoria Mejia",
+			"username": "arlen_the_marlin",
+			"_id": "b88b9837-bb25-46a9-afcc-8c01ff54eab3"
+		},
+		{
+			"image": "./assets/user-images/image-jackson.jpg",
+			"name": "Jackson Barker",
+			"username": "countryspirit",
+			"_id": "13ed8387-0a06-4a97-9023-305eb3141c90"
+		},
+		{
+			"image": "./assets/user-images/image-george.jpg",
+			"name": "George Partridge",
+			"username": "soccerviewer8",
+			"_id": "fde294a1-5316-4503-817c-88d3234c12e5"
+		},
+		{
+			"image": "./assets/user-images/image-ryan.jpg",
+			"name": "Ryan Welles",
+			"username": "voyager.344",
+			"_id": "3a900215-ad71-434b-92cf-bcd2a674cd9b"
+		},
+		{
+			"image": "./assets/user-images/image-suzanne.jpg",
+			"name": "Suzanne Chang",
+			"username": "upbeat1811",
+			"_id": "c44a609f-5004-4baf-82e8-62736bf36c7f"
+		},
+		{
+			"image": "./assets/user-images/image-victoria.jpg",
+			"name": "Victoria Mejia",
+			"username": "arlen_the_marlin",
+			"_id": "a479e4d5-5fca-4eca-99bb-7d20792c76b1"
+		},
+		{
+			"image": "./assets/user-images/image-suzanne.jpg",
+			"name": "Suzanne Chang",
+			"username": "upbeat1811",
+			"_id": "198ddacb-dd0a-42e4-b8a2-1ff16684692c"
+		},
+		{
+			"image": "./assets/user-images/image-zena.jpg",
+			"name": "Zena Kelley",
+			"username": "velvetround",
+			"_id": "a65d817c-c879-44ca-8cad-86b581761d2e"
+		}
+	],
+	"productRequests": [
+		{
+			"title": "Add tags for solutions",
+			"category": "enhancement",
+			"upvotes": 112,
+			"status": "suggestion",
+			"description": "Easier to search for solutions based on a specific stack.",
+			"comments": [
+				"1b4a73d2-f5d2-4827-b961-a11b42985675",
+				"db3d10e4-2af6-4509-b7e0-e8fbfa77034a"
+			],
+			"_id": "c7e4c011-eebd-41cc-9117-fbb8f9e95a42"
+		},
+		{
+			"title": "Add a dark theme option",
+			"category": "feature",
+			"upvotes": 99,
+			"status": "suggestion",
+			"description": "It would help people with light sensitivities and who prefer dark mode.",
+			"comments": [
+				"7146f9b0-6a5b-4667-bb2b-ef76c3878848",
+				"2d31152a-76c4-41e9-ad10-49714fde2f20"
+			],
+			"_id": "21dbaea9-6e55-4421-b675-4eadb50edaa1"
+		},
+		{
+			"title": "Q&A within the challenge hubs",
+			"category": "feature",
+			"upvotes": 65,
+			"status": "suggestion",
+			"description": "Challenge-specific Q&A would make for easy reference.",
+			"comments": ["39065111-9145-4431-89c0-3dfd34fbd020"],
+			"_id": "1d31ab7f-491f-4176-aaaa-689449bdaf96"
+		},
+		{
+			"title": "Add image/video upload to feedback",
+			"category": "enhancement",
+			"upvotes": 51,
+			"status": "suggestion",
+			"description": "Images and screencasts can enhance comments on solutions.",
+			"comments": [
+				"8c416a1c-ef2d-4473-aad0-7ef6760d803b",
+				"c53e87b9-df47-405a-af2a-7a981b476e4e"
+			],
+			"_id": "7f66710e-3726-413b-8d7c-efe3f8ff7701"
+		},
+		{
+			"title": "Ability to follow others",
+			"category": "feature",
+			"upvotes": 42,
+			"status": "suggestion",
+			"description": "Stay updated on comments and solutions other people post.",
+			"comments": [
+				"8cc516b7-8ab6-4055-9979-9ae8dd02c59e",
+				"ab195edc-d94a-4aaa-ac8e-f7643e99081b"
+			],
+			"_id": "6640eb28-ca23-4158-9592-57b4c3766cdb"
+		},
+		{
+			"title": "Preview images not loading",
+			"category": "bug",
+			"upvotes": 3,
+			"status": "suggestion",
+			"description": "Challenge preview images are missing when you apply a filter.",
+			"_id": "7a075528-d7d9-426a-aee8-de83887e44fd",
+			"comments": []
+		},
+		{
+			"title": "More comprehensive reports",
+			"category": "feature",
+			"upvotes": 123,
+			"status": "planned",
+			"description": "It would be great to see a more detailed breakdown of solutions.",
+			"comments": [
+				"25e316b0-6385-49a5-8301-94f2c67d8ed4",
+				"2c468f57-221a-4407-ae4d-6dc59b360fed"
+			],
+			"_id": "05ce48ae-63d3-4003-a21c-85dd2fe550a5"
+		},
+		{
+			"title": "Learning paths",
+			"category": "feature",
+			"upvotes": 28,
+			"status": "planned",
+			"description": "Sequenced projects for different goals to help people improve.",
+			"comments": ["c7af3f65-f11a-4e01-82f9-d5e33c49038a"],
+			"_id": "13e3bc7e-37ea-4e4b-9ac5-c9f83fd7099f"
+		},
+		{
+			"title": "One-click portfolio generation",
+			"category": "feature",
+			"upvotes": 62,
+			"status": "in-progress",
+			"description": "Add ability to create professional looking portfolio from profile.",
+			"comments": ["71649374-4dd9-405f-bb02-a8a9d66a2f42"],
+			"_id": "2a138aab-65e4-4eeb-afab-319d7d4b6722"
+		},
+		{
+			"title": "Bookmark challenges",
+			"category": "feature",
+			"upvotes": 31,
+			"status": "in-progress",
+			"description": "Be able to bookmark challenges to take later on.",
+			"comments": ["9e02e0e5-0ca7-473b-87ba-d7e4794bb49b"],
+			"_id": "3df1b15d-0ef2-42f4-a2f6-b7ce66341057"
+		},
+		{
+			"title": "Animated solution screenshots",
+			"category": "bug",
+			"upvotes": 9,
+			"status": "in-progress",
+			"description": "Screenshots of solutions with animations don\u2019t display correctly.",
+			"_id": "abd2fb80-0e3f-4ae6-a01d-6e7a56a57046",
+			"comments": []
+		},
+		{
+			"title": "Add micro-interactions",
+			"category": "enhancement",
+			"upvotes": 71,
+			"status": "live",
+			"description": "Small animations at specific points can add delight.",
+			"comments": ["d9fbad06-6dad-424c-a3e6-56824c20c7d8"],
+			"_id": "033ffc5d-96f2-4495-93f9-58598a6d06d0"
+		}
+	],
+	"comments": [
+		{
+			"content": "Awesome idea! Trying to find framework-specific projects within the hubs can be tedious",
+			"user": "198ddacb-dd0a-42e4-b8a2-1ff16684692c",
+			"_id": "1b4a73d2-f5d2-4827-b961-a11b42985675"
+		},
+		{
+			"content": "Please use fun, color-coded labels to easily identify them at a glance",
+			"user": "cdf7ec25-3041-48ca-b49a-183d099a8c15",
+			"_id": "db3d10e4-2af6-4509-b7e0-e8fbfa77034a"
+		},
+		{
+			"content": "Also, please allow styles to be applied based on system preferences. I would love to be able to browse Frontend Mentor in the evening after my device\u2019s dark mode turns on without the bright background it currently has.",
+			"user": "e08ce37d-9c7a-465b-849b-f14d35d3c64a",
+			"_id": "7146f9b0-6a5b-4667-bb2b-ef76c3878848"
+		},
+		{
+			"content": "Second this! I do a lot of late night coding and reading. Adding a dark theme can be great for preventing eye strain and the headaches that result. It\u2019s also quite a trend with modern apps and  apparently saves battery life.",
+			"user": "d5212e02-57d6-4ee0-92d6-438cbf1c1c47",
+			"replies": [
+				"962eef35-32c3-4699-97f4-f33e30afe063",
+				"423f3ee1-d9d7-433d-ae9a-429e8f44c100"
+			],
+			"_id": "2d31152a-76c4-41e9-ad10-49714fde2f20"
+		},
+		{
+			"content": "Much easier to get answers from devs who can relate, since they've either finished the challenge themselves or are in the middle of it.",
+			"user": "fde294a1-5316-4503-817c-88d3234c12e5",
+			"_id": "39065111-9145-4431-89c0-3dfd34fbd020"
+		},
+		{
+			"content": "Right now, there is no ability to add images while giving feedback which isn't ideal because I have to use another app to show what I mean",
+			"user": "6205b74f-8b7e-49ba-94bf-e80eb0b46e56",
+			"_id": "8c416a1c-ef2d-4473-aad0-7ef6760d803b"
+		},
+		{
+			"content": "Yes I'd like to see this as well. Sometimes I want to add a short video or gif to explain the site's behavior..",
+			"user": "bf6decf3-b770-481e-8c19-4ff525c8250f",
+			"_id": "c53e87b9-df47-405a-af2a-7a981b476e4e"
+		},
+		{
+			"content": "I also want to be notified when devs I follow submit projects on FEM. Is in-app notification also in the pipeline?",
+			"user": "a479e4d5-5fca-4eca-99bb-7d20792c76b1",
+			"replies": ["4094ebf5-3f00-4989-8e06-8f111f546b57"],
+			"_id": "8cc516b7-8ab6-4055-9979-9ae8dd02c59e"
+		},
+		{
+			"content": "I've been saving the profile URLs of a few people and I check what they\u2019ve been doing from time to time. Being able to follow them solves that",
+			"user": "13ed8387-0a06-4a97-9023-305eb3141c90",
+			"_id": "ab195edc-d94a-4aaa-ac8e-f7643e99081b"
+		},
+		{
+			"content": "This would be awesome! It would be so helpful to see an overview of my code in a way that makes it easy to spot where things could be improved.",
+			"user": "a479e4d5-5fca-4eca-99bb-7d20792c76b1",
+			"_id": "25e316b0-6385-49a5-8301-94f2c67d8ed4"
+		},
+		{
+			"content": "Yeah, this would be really good. I'd love to see deeper insights into my code!",
+			"user": "13ed8387-0a06-4a97-9023-305eb3141c90",
+			"_id": "2c468f57-221a-4407-ae4d-6dc59b360fed"
+		},
+		{
+			"content": "Having a path through the challenges that I could follow would be brilliant! Sometimes I'm not sure which challenge would be the best next step to take. So this would help me navigate through them!",
+			"user": "fde294a1-5316-4503-817c-88d3234c12e5",
+			"_id": "c7af3f65-f11a-4e01-82f9-d5e33c49038a"
+		},
+		{
+			"content": "I haven't built a portfolio site yet, so this would be really helpful. Might it also be possible to choose layout and colour themes?!",
+			"user": "3a900215-ad71-434b-92cf-bcd2a674cd9b",
+			"_id": "71649374-4dd9-405f-bb02-a8a9d66a2f42"
+		},
+		{
+			"content": "This would be great! At the moment, I'm just starting challenges in order to save them. But this means the My Challenges section is overflowing with projects and is hard to manage. Being able to bookmark challenges would be really helpful.",
+			"user": "198ddacb-dd0a-42e4-b8a2-1ff16684692c",
+			"_id": "9e02e0e5-0ca7-473b-87ba-d7e4794bb49b"
+		},
+		{
+			"content": "I'd love to see this! It always makes me so happy to see little details like these on websites.",
+			"user": "a479e4d5-5fca-4eca-99bb-7d20792c76b1",
+			"replies": ["355dcb05-095a-4aaa-98f3-06f5d15d639d"],
+			"_id": "d9fbad06-6dad-424c-a3e6-56824c20c7d8"
+		}
+	]
+}

@@ -9,28 +9,34 @@ export default function Page() {
 	return (
 		<form className="relative mb-6 flex flex-wrap items-start rounded-xl bg-white p-6">
 			<CategoryBtn
+				category={category}
+				categoryValue="all"
+				text="All"
+			/>
+			<CategoryBtn
+				category={category}
+				categoryValue="UI"
 				text="UI"
-				category={category}
 			/>
 			<CategoryBtn
+				category={category}
+				categoryValue="UX"
 				text="UX"
-				category={category}
 			/>
 			<CategoryBtn
-				text="all"
 				category={category}
-			/>
-			<CategoryBtn
-				text="bug"
-				category={category}
-			/>
-			<CategoryBtn
+				categoryValue="enhancement"
 				text="enhancement"
-				category={category}
 			/>
 			<CategoryBtn
-				text="feature"
 				category={category}
+				categoryValue="bug"
+				text="Bug"
+			/>
+			<CategoryBtn
+				category={category}
+				categoryValue="feature"
+				text="feature"
 			/>
 		</form>
 	)

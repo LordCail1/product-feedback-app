@@ -6,10 +6,10 @@ export const revalidate = 0
 
 export default async function Page() {
 	try {
-		await fetch("http://localhost:3000/api", {
-			method: "POST",
-			cache: "no-cache"
-		})
+		// await fetch("http://localhost:3000/api", {
+		// 	method: "POST",
+		// 	cache: "no-cache"
+		// })
 
 	} catch (error) {
 		console.log("failed to send get request", error)

@@ -1,3 +1,4 @@
+import { Category } from "@/types"
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 
 type InitialState = {

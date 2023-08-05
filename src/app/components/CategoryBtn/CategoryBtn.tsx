@@ -4,20 +4,22 @@ import { useAppDispatch } from "@/hooks/redux/reduxHooks"
 import { changeCategory } from "@/features/categorySlice"
 import colors from "@/assets/colors"
 import React from "react"
+import { Category } from "@/types"
 
 type Props = {
-	text: Category
 	category: Category
+	categoryValue: Category
+	text: string
 }
 
-export default function CategoryBtn({ text, category }: Props) {
+export default function CategoryBtn({ category, categoryValue, text }: Props) {
 	const dispatch = useAppDispatch()
 
-	const condition = category === text
+	const condition = category === categoryValue
 
 	function handleChangeCategoryClick(e: React.MouseEvent<HTMLDivElement>) {
 		e.preventDefault()
-		dispatch(changeCategory(text))
+		dispatch(changeCategory(categoryValue))
 	}
 
 	return (

@@ -8,5 +8,5 @@ export const productRequestValidator = z.object({
     upvotes: z.number().int().positive(),
     status: Status,
     description: z.string().min(1).max(500),
-    comments: z.array(z.string())
+    comments: z.array(z.string()).optional()
 })
