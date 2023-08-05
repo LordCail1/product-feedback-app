@@ -3,7 +3,7 @@
 import { useAppDispatch } from "@/hooks/redux/reduxHooks"
 import { changeCategory } from "@/features/categorySlice"
 import colors from "@/assets/colors"
-import React from "react"
+import React, { useState } from "react"
 import { Category } from "@/types"
 
 type Props = {
@@ -12,8 +12,13 @@ type Props = {
 	text: string
 }
 
-export default function CategoryBtn({ category, categoryValue, text }: Props) {
+export default function CategoryBtn({
+	category,
+	categoryValue,
+	text,
+}: Props) {
 	const dispatch = useAppDispatch()
+	const [isHovering, setIsHovering] = useState(false)
 
 	const condition = category === categoryValue
 
@@ -24,11 +29,15 @@ export default function CategoryBtn({ category, categoryValue, text }: Props) {
 
 	return (
 		<div
-			className="bg-rain mx-2 my-3 flex grow-0 cursor-pointer items-center justify-center rounded-lg bg-cotton_ball px-4 py-1 hover:bg-pale_phthalo_blue transition-colors"
+			className="mx-2 my-3 flex grow-0 cursor-pointer items-center justify-center rounded-lg px-4 py-1 transition-colors"
 			onClick={handleChangeCategoryClick}
+			onMouseEnter={() => setIsHovering(true)}
+			onMouseLeave={() => setIsHovering(false)}
 			style={{
 				backgroundColor: condition
 					? colors.rainbow_fish
+					: isHovering
+					? colors.pale_phthalo_blue
 					: colors.cotton_ball,
 				color: condition ? colors.white : colors.rainbow_fish,
 			}}

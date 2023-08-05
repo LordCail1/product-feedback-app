@@ -1,6 +1,6 @@
 "use client"
 
-import CategoryBtn from "@/app/components/CategoryBtn/CategoryBtn"
+import CategoryBtn from "@/app/home/components/CategoryBtn/CategoryBtn"
 import { useAppSelector } from "@/hooks/redux/reduxHooks"
 
 export default function Page() {

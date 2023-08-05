@@ -1,8 +1,8 @@
 import React from "react"
-import "./globals.css"
+import "../globals.css"
 import type { Metadata } from "next"
 import ReduxProvider from "@/providers/ReduxProvider"
-import {Jost} from "next/font/google"
+import { Jost } from "next/font/google"
 
 export const metadata: Metadata = {
 	title: "Product Feedback",
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 const jost = Jost({
 	weight: "400",
 	subsets: ["latin"],
-	display: "swap"
+	display: "swap",
 })
 
 type Props = {
@@ -29,7 +29,12 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<ReduxProvider>
-				<body className={"flex h-screen p-40 justify-center items-center bg-ghost_white " + jost.className}>
+				<body
+					className={
+						"flex h-screen items-center justify-center bg-ghost_white p-40 " +
+						jost.className
+					}
+				>
 					{children}
 					{optionsMenu}
 					{mainFeedbacks}

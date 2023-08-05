@@ -5,7 +5,7 @@ export default function Page() {
 		<div className="relative mb-6 flex rounded-xl bg-white p-6 flex-col">
 			<div className="flex justify-between">
 				<h3>Roadmap</h3>
-				<Link href={"/roadmap"}>View</Link>
+				<Link href={"/roadmap"} className="">View</Link>
 			</div>
 			<ul className="flex flex-col">
 				<li>
