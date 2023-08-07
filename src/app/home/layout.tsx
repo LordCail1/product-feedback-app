@@ -31,7 +31,7 @@ export default function RootLayout({
 			<ReduxProvider>
 				<body
 					className={
-						"flex h-screen items-center justify-center bg-ghost_white p-40 " +
+						"flex h-screen items-start justify-center bg-ghost_white p-40 " +
 						jost.className
 					}
 				>
