@@ -1,4 +1,4 @@
-import SuggestionNavbar from "./components/SuggestionNavbar/SuggestionNavbar";
+import SuggestionNavbar from "../../components/SuggestionNavbar/SuggestionNavbar";
 
 export default function Page() {
     return (
