@@ -5,17 +5,17 @@ import { changeCategory } from "@/features/categorySlice"
 import colors from "@/assets/colors"
 import React, { useState } from "react"
 import { Category } from "@/types"
+import { RadioGroupItem } from "@/components/ui/radio-group"
+import { Label } from "@/components/ui/label"
 
 type Props = {
 	category: Category
 	categoryValue: Category
-	text: string
 }
 
-export default function CategoryBtn({
+export default function CategoryRadioGroupItem({
 	category,
 	categoryValue,
-	text,
 }: Props) {
 	const dispatch = useAppDispatch()
 	const [isHovering, setIsHovering] = useState(false)
@@ -42,18 +42,16 @@ export default function CategoryBtn({
 				color: condition ? colors.white : colors.rainbow_fish,
 			}}
 		>
-			<label
-				className={"cursor-pointer"}
-				htmlFor={text}
+			<Label
+				className="cursor-pointer capitalize"
+				htmlFor={categoryValue}
 			>
-				{text}
-			</label>
-			<input
+				{categoryValue}
+			</Label>
+			<RadioGroupItem
 				className="sr-only"
-				id={text}
-				name="category"
-				type="radio"
-				value={text}
+				id={categoryValue}
+				value={categoryValue}
 			/>
 		</div>
 	)

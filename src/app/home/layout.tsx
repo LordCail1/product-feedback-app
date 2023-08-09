@@ -1,7 +1,6 @@
 import React from "react"
 import "../globals.css"
 import type { Metadata } from "next"
-import ReduxProvider from "@/providers/ReduxProvider"
 import { Jost } from "next/font/google"
 
 export const metadata: Metadata = {
@@ -21,25 +20,21 @@ type Props = {
 	optionsMenu: React.ReactNode
 }
 
-export default function RootLayout({
+export default function Layout({
 	children,
 	mainFeedbacks,
 	optionsMenu,
 }: Props) {
 	return (
-		<html lang="en">
-			<ReduxProvider>
-				<body
-					className={
-						"flex h-screen items-start justify-center bg-ghost_white p-40 " +
-						jost.className
-					}
-				>
-					{children}
-					{optionsMenu}
-					{mainFeedbacks}
-				</body>
-			</ReduxProvider>
-		</html>
+		<section
+			className={
+				"flex h-screen items-start justify-center bg-ghost_white p-40 " +
+				jost.className
+			}
+		>
+			{children}
+			{optionsMenu}
+			{mainFeedbacks}
+		</section>
 	)
 }

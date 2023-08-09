@@ -1,43 +1,32 @@
 "use client"
 
-import CategoryBtn from "@/app/home/components/CategoryBtn/CategoryBtn"
+import CategoryRadioGroupItem from "../../components/CategoryRadioGroupItem/CategoryRadioGroupItem"
+import { RadioGroup } from "@/components/ui/radio-group"
 import { useAppSelector } from "@/hooks/redux/reduxHooks"
+import CategoryRadioGroup from "../../components/CategoryRadioGroup/CategoryRadioGroup"
 
 export default function Page() {
-	const category = useAppSelector((state) => state.value.category)
 
 	return (
-		<form className="relative mb-6 flex flex-wrap items-start rounded-xl bg-white p-6">
-			<CategoryBtn
-				category={category}
+		<CategoryRadioGroup className="relative mb-6 flex flex-wrap items-start rounded-xl bg-white p-6" defaultValue="all">
+			<CategoryRadioGroupItem
 				categoryValue="all"
-				text="All"
 			/>
-			<CategoryBtn
-				category={category}
+			<CategoryRadioGroupItem
 				categoryValue="UI"
-				text="UI"
 			/>
-			<CategoryBtn
-				category={category}
+			<CategoryRadioGroupItem
 				categoryValue="UX"
-				text="UX"
 			/>
-			<CategoryBtn
-				category={category}
+			<CategoryRadioGroupItem
 				categoryValue="enhancement"
-				text="enhancement"
 			/>
-			<CategoryBtn
-				category={category}
+			<CategoryRadioGroupItem
 				categoryValue="bug"
-				text="Bug"
 			/>
-			<CategoryBtn
-				category={category}
+			<CategoryRadioGroupItem
 				categoryValue="feature"
-				text="feature"
 			/>
-		</form>
+		</CategoryRadioGroup>
 	)
 }

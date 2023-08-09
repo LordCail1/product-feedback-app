@@ -1,8 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import filterSliceReducer from '../features/categorySlice'
+import categorySliceReducer from '@/features/categorySlice'
+import suggestionsFilterSlice from "@/features/suggestionsFilterSlice";
 
 export const store = configureStore({
-    reducer: filterSliceReducer
+    reducer: {
+        category: categorySliceReducer,
+        suggestionsFilter: suggestionsFilterSlice
+    }
+
 })
 
 

@@ -20,9 +20,9 @@ export default async function Page() {
 				src={desktopBackgroundHeaderImage}
 				alt=""
 				fill
-				className="-z-10 rounded-xl"
+				className="rounded-xl"
 			/>
-			<h2 className="ml-6 mt-16 text-xl font-bold text-white">
+			<h2 className="ml-6 mt-16 text-xl font-bold text-white relative">
 				Frontend Mentor
 			</h2>
 			<span className="ml-6 inline-block text-sm font-medium text-white opacity-75">

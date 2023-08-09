@@ -11,10 +11,14 @@ import Image from "next/image"
 import IconArrowUp from "@/assets/svg/IconArrowUp.svg"
 import SuggestionNavbarDropdownMenuRadioItem from "./SuggestionNavbarDropdownMenuRadioItem/SuggestionNavbarDropdownMenuRadioItem"
 import { useState } from "react"
+import { useAppDispatch, useAppSelector } from "@/hooks/redux/reduxHooks"
 
 export default function SuggestionNavbarDropdownMenu() {
+	const filterValue = useAppSelector((state) => state.suggestionsFilter.value.suggestionsFilter)
 	const [value, setValue] = useState("Most Upvotes")
 	const [expanded, setExpanded] = useState(false)
+
+
 
 	return (
 		<DropdownMenu onOpenChange={() => setExpanded(!expanded)}>
@@ -33,8 +37,7 @@ export default function SuggestionNavbarDropdownMenu() {
 			</DropdownMenuTrigger>
 			<DropdownMenuContent className="p-0">
 				<DropdownMenuRadioGroup
-					value={value}
-					onValueChange={setValue}
+					value={filterValue}
 				>
 					<SuggestionNavbarDropdownMenuRadioItem value="Most Upvotes" />
 					<DropdownMenuSeparator className="m-0" />

@@ -14,7 +14,7 @@ const initialState: InitialState = {
 }
 
 const categorySlice = createSlice({
-	name: "filter",
+	name: "category",
 	initialState,
 	reducers: {
 		changeCategory: (state, action: PayloadAction<Category>) => {
