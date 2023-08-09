@@ -43,7 +43,7 @@ export default function CategoryRadioGroupItem({
 			}}
 		>
 			<Label
-				className="cursor-pointer capitalize py-2 px-4"
+				className="cursor-pointer capitalize py-2 px-4 font-semibold"
 				htmlFor={categoryValue}
 			>
 				{categoryValue}

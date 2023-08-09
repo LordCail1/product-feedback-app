@@ -1,4 +1,5 @@
 const colors = {
+    after_party_pink: "#C75AF6",
     blue_mana: "#62BCFA",
     cotton_ball: "#F2F4FF",
     creamy_peach: "#F49F85",
