@@ -21,18 +21,16 @@ type Props = {
 }
 
 export default function Layout({
-	children,
 	mainFeedbacks,
 	optionsMenu,
 }: Props) {
 	return (
 		<section
 			className={
-				"flex h-screen items-start justify-center bg-ghost_white p-40 " +
+				"flex justify-center bg-ghost_white p-40 relative" +
 				jost.className
 			}
 		>
-			{children}
 			{optionsMenu}
 			{mainFeedbacks}
 		</section>
