@@ -6,6 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "docker:devUp": "./development.sh",
+    "docker:buildUp": "./production.sh",
+    "docker:devUp:rebuild": "./development.rebuild.sh",
+    "docker:devDown":"./development.down.sh",
+    "docker:buildUp:rebuild": "./production.rebuild.sh",
+    "docker:buildDown": "./production.down.sh",
     "lint": "next lint"
   },
   "dependencies": {
