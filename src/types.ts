@@ -25,8 +25,20 @@ export type SuggestionFilter =
  */
 export type Status = "suggestion" | "planned" | "in-progress" | "live"
 
+/**
+ * This type is used for the types of fields that we have for the feedbacks
+ */
+export type FeedbackField =
+	| "title"
+	| "category"
+	| "feedbackDetail"
+	| "feedbackStatus"
+
+
+
+	
 export interface ProductRequest extends Document {
-	_id: number
+	_id?: number
 	title: string
 	category: Category
 	upvotes: number

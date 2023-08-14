@@ -1,11 +1,11 @@
-import FeedbackManipulator from "@/components/FeedbackManipulator/FeedbackManipulator"
+import FeedbackManipulator from "@/app/components/FeedbackManipulator/FeedbackManipulator"
 
 
 export const revalidate = 0
 
 export default function Page() {
 	return (
-		<section className="h-screen relative bg-ghost_white">
+		<section className="relative h-screen bg-ghost_white">
 			<FeedbackManipulator />
 		</section>
 	)

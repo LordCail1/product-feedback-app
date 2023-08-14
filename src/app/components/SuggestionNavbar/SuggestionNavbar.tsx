@@ -7,7 +7,7 @@ import Link from "next/link"
 
 export default function SuggestionNavbar() {
 	return (
-		<nav className="mb-6 flex rounded-xl bg-raven_night py-6 pl-6 pr-4 text-white">
+		<nav className="mb-6 flex rounded-xl bg-raven_night py-6 pl-6 pr-4 text-white items-center">
 			<Image
 				alt=""
 				src={LightBulb}

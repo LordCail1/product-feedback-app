@@ -21,6 +21,8 @@ export default async function Page() {
 				alt=""
 				fill
 				className="rounded-xl"
+				priority={true}
+				sizes="100vw, 100vw, 100vw"
 			/>
 			<h2 className="ml-6 mt-16 text-xl font-bold text-white relative">
 				Frontend Mentor
