@@ -1,13 +1,14 @@
 import ReduxProvider from "@/providers/ReduxProvider"
+import { ReactNode } from "react"
 
 type Props = {
-	children: React.ReactNode
+	children: ReactNode
 }
 
 export default function RootLayout({ children }: Props) {
 	return (
 		<html lang="en">
-			<body>
+			<body className="h-screen bg-ghost_white">
 				<ReduxProvider>{children}</ReduxProvider>
 			</body>
 		</html>

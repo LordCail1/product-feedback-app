@@ -1,6 +1,10 @@
+"use client"
+
 import UpvoteBtn from "@/app/components/UpvoteBtn/UpvoteBtn"
 import NumberCommentsIndicator from "../NumberCommentsIndicator/NumberCommentsIndicator"
 import { Badge } from "@/components/ui/badge"
+import { useRouter } from "next/navigation"
+import { useEffect } from "react"
 
 export default function FeedbackCard() {
 	return (

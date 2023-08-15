@@ -1,7 +1,9 @@
+import { ProductRequestBaseType } from "@/types";
 import mongoose, {Schema} from "mongoose";
 
 
-const productRequestSchema = new Schema({
+
+const productRequestSchema = new Schema<ProductRequestBaseType>({
     title: String,
     category: String,
     upvotes: Number,

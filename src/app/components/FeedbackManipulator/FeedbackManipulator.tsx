@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { Form } from "@/components/ui/form"
+import { ProductRequestBaseType } from "@/types"
 import { useForm } from "react-hook-form"
 import { useRouter } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -9,14 +10,16 @@ import * as z from "zod"
 import FeedbackCategoryFormField from "@/app/components/FeedbackManipulator/Fields/FeedbackCategoryFormField/FeedbackCategoryFormField"
 import FeedbackDetailFormField from "@/app/components/FeedbackManipulator/Fields/FeedbackDetailFormField/FeedbackDetailFormField"
 import FeedbackTitleFormField from "@/app/components/FeedbackManipulator/Fields/FeedbackTitleFormField/FeedbackTitleFormField"
+import IconArrowLeft from "@/assets/svg/IconArrowLeft.svg"
 import IconNewFeedback from "@/assets/svg/IconNewFeedback.svg"
 import Image from "next/image"
 import Link from "next/link"
-import IconArrowLeft from "@/assets/svg/IconArrowLeft.svg"
-import { ProductRequest } from "@/types"
 
 const FormSchema = z.object({
-	title: z.string().min(1, "Can't be empty"),
+	title: z
+		.string()
+		.min(1, "Can't be empty")
+		.max(50, "Can't be more than 50 characters!"),
 	category: z.enum(["UI", "UX", "enhancement", "bug", "feature"]),
 	feedbackDetail: z.string().min(1, "Can't be empty"),
 })
@@ -37,23 +40,29 @@ export default function FeedbackManipulator() {
 	} = form
 
 	async function onSubmit(data: z.infer<typeof FormSchema>) {
-		console.log("data in onSubmit function", data)
-		const body: ProductRequest = {
-			title: data.title,
-			category: data.category,
-			upvotes: 0,
-			status: "suggestion",
-			description: data.feedbackDetail,
+		try {
+			console.log("data in onSubmit function", data)
+			const body: ProductRequestBaseType = {
+				title: data.title,
+				category: data.category,
+				upvotes: 0,
+				status: "suggestion",
+				description: data.feedbackDetail,
+			}
+
+			const res = await fetch("http://localhost:3000/api/productRequest", {
+				method: "POST",
+				body: JSON.stringify(body),
+				headers: {
+					"Content-Type": "application/json",
+				},
+			})
+
+			if (!res.ok) throw new Error("Something went wrong")
+			router.push("/home")
+		} catch (error) {
+			console.log("there was an error sending the data", error)
 		}
-
-		const res = await fetch("/api/createFeedback", {
-			method: "POST",
-			body: JSON.stringify(body)
-		})
-
-		if (!res.ok) throw new Error("Something went wrong")
-
-		router.back()
 	}
 
 	return (
@@ -69,13 +78,15 @@ export default function FeedbackManipulator() {
 				/>
 				<Link
 					href="/home"
-					className="absolute left-0 flex items-center -top-20"
+					className="absolute -top-20 left-0 flex items-center"
 				>
 					<Image
 						src={IconArrowLeft}
 						alt=""
 					/>
-					<span className="ml-4 text-ocean_night font-bold text-sm hover:underline">Go Back</span>
+					<span className="ml-4 text-sm font-bold text-ocean_night hover:underline">
+						Go Back
+					</span>
 				</Link>
 				<h1 className="pb-10 pt-12 text-2xl font-bold">
 					Create New Feedback

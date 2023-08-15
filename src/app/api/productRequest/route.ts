@@ -1,0 +1,61 @@
+import { NextRequest } from "next/server"
+import connectMongoose from "@/lib/connectMongoose"
+import { ProductRequestBaseType, ProductRequestModelType } from "@/types"
+import ProductRequestModel from "@/models/productRequestSchema"
+import { NextResponse } from "next/server"
+import { productRequestValidator } from "@/validators/productRequestValidator"
+import { ZodError } from "zod"
+
+/**Post a feedback request */
+export async function POST(request: NextRequest) {
+	let res: ProductRequestBaseType
+	try {
+		res = await request.json()
+	} catch (error) {
+		return NextResponse.json(
+			{ message: "Failed to parse JSON object" },
+			{ status: 400 }
+		)
+	}
+
+	let validateData: {
+		title: string
+		category: "all" | "UI" | "UX" | "enhancement" | "bug" | "feature"
+		upvotes: number
+		status: "suggestion" | "planned" | "in-progress" | "live"
+		description: string
+		comments?: string[] | undefined
+	}
+
+	try {
+		validateData = productRequestValidator.parse(res)
+	} catch (error: any) {
+		const zodError = error as ZodError
+		const errorMessage = zodError.errors
+			.map((err) => err.message)
+			.join(", ")
+		return NextResponse.json(
+			{ message: `Invalid data submitted, ${errorMessage}` },
+			{ status: 400 }
+		)
+	}
+
+	const { category, description, status, title, upvotes } = res
+
+	try {
+		await connectMongoose()
+		const productRequest: ProductRequestModelType =
+			new ProductRequestModel({
+				title,
+				category,
+				upvotes,
+				status,
+				description,
+			})
+		await productRequest.save()
+		return NextResponse.json({ message: "success" }, { status: 200 })
+	} catch (error) {
+		console.log("failed to create user in the database.", error)
+		return NextResponse.error()
+	}
+}

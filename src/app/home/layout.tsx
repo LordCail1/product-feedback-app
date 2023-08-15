@@ -2,6 +2,7 @@ import React from "react"
 import "../globals.css"
 import type { Metadata } from "next"
 import { Jost } from "next/font/google"
+import { ReactNode } from "react"
 
 export const metadata: Metadata = {
 	title: "Product Feedback",
@@ -15,21 +16,14 @@ const jost = Jost({
 })
 
 type Props = {
-	children: React.ReactNode
-	mainFeedbacks: React.ReactNode
-	optionsMenu: React.ReactNode
+	mainFeedbacks: ReactNode
+	optionsMenu: ReactNode
 }
 
-export default function Layout({
-	mainFeedbacks,
-	optionsMenu,
-}: Props) {
+export default function Layout({ mainFeedbacks, optionsMenu }: Props) {
 	return (
 		<section
-			className={
-				"flex justify-center bg-ghost_white p-40 relative" +
-				jost.className
-			}
+			className={`relative pt-24 flex justify-center ${jost.className}`}
 		>
 			{optionsMenu}
 			{mainFeedbacks}

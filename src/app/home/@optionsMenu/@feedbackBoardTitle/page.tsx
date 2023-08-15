@@ -2,18 +2,9 @@ import Image from "next/image"
 import desktopBackgroundHeaderImage from "@/assets/desktopBackgroundHeaderImage.png"
 
 
-export const revalidate = 0
+
 
 export default async function Page() {
-	try {
-		// await fetch("http://localhost:3000/api", {
-		// 	method: "POST",
-		// 	cache: "no-cache"
-		// })
-
-	} catch (error) {
-		console.log("failed to send get request", error)
-	}
 	return (
 		<div className="relative h-32 basis-[137px] mb-6">
 			<Image
