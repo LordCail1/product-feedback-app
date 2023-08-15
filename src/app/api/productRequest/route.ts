@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
 
 	try {
 		validateData = productRequestValidator.parse(res)
-	} catch (error: any) {
+	} catch (error) {
 		const zodError = error as ZodError
 		const errorMessage = zodError.errors
 			.map((err) => err.message)

@@ -1,12 +1,19 @@
-import Image from "next/image";
 import IconComments from "@/assets/svg/IconComments.svg"
+import Image from "next/image"
 
-export default function NumberCommentsIndicator() {
-    return (
-        <div className="flex absolute p-1 top-16 right-8 items-center">
-            <Image src={IconComments} alt="" className="mr-2"/>
-            <span>3</span>
+type Props = {
+	count: number | undefined
+}
 
-        </div>
-    )
+export default function NumberCommentsIndicator({ count }: Props) {
+	return (
+		<div className="absolute right-8 top-16 flex items-center p-1">
+			<Image
+				alt=""
+				className="mr-2"
+				src={IconComments}
+			/>
+			<span>{count ? count : 0}</span>
+		</div>
+	)
 }
