@@ -7,6 +7,7 @@ const productRequestSchema = new Schema<ProductRequestBaseType>({
     title: String,
     category: String,
     upvotes: Number,
+    hasBeenUpvoted: Boolean,
     status: String,
     description: String,
     comments: [{type: Schema.Types.ObjectId, ref: "Comment"}]

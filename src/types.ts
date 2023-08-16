@@ -41,6 +41,7 @@ export interface ProductRequestBaseType {
 	_id?: Types.ObjectId
 	title: string
 	category: Category
+	hasBeenUpvoted: boolean
 	upvotes: number
 	status: Status
 	description: string

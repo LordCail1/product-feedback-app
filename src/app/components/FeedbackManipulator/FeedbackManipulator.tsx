@@ -41,11 +41,11 @@ export default function FeedbackManipulator() {
 
 	async function onSubmit(data: z.infer<typeof FormSchema>) {
 		try {
-			console.log("data in onSubmit function", data)
 			const body: ProductRequestBaseType = {
 				title: data.title,
 				category: data.category,
 				upvotes: 0,
+				hasBeenUpvoted: false,
 				status: "suggestion",
 				description: data.feedbackDetail,
 			}

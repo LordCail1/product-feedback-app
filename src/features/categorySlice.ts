@@ -18,7 +18,6 @@ const categorySlice = createSlice({
 	initialState,
 	reducers: {
 		changeCategory: (state, action: PayloadAction<Category>) => {
-			console.log('this played')
 			state.value.category = action.payload
 		},
 	},

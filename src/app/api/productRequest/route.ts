@@ -1,10 +1,10 @@
 import { NextRequest } from "next/server"
-import connectMongoose from "@/lib/connectMongoose"
-import { ProductRequestBaseType, ProductRequestModelType } from "@/types"
-import ProductRequestModel from "@/models/productRequestSchema"
 import { NextResponse } from "next/server"
+import { ProductRequestBaseType, ProductRequestModelType } from "@/types"
 import { productRequestValidator } from "@/validators/productRequestValidator"
 import { ZodError } from "zod"
+import connectMongoose from "@/lib/connectMongoose"
+import ProductRequestModel from "@/models/productRequestSchema"
 
 /**Post a feedback request */
 export async function POST(request: NextRequest) {
@@ -19,12 +19,13 @@ export async function POST(request: NextRequest) {
 	}
 
 	let validateData: {
-		title: string
 		category: "all" | "UI" | "UX" | "enhancement" | "bug" | "feature"
-		upvotes: number
-		status: "suggestion" | "planned" | "in-progress" | "live"
-		description: string
 		comments?: string[] | undefined
+		description: string
+		hasBeenUpvoted: boolean
+		status: "suggestion" | "planned" | "in-progress" | "live"
+		title: string
+		upvotes: number
 	}
 
 	try {

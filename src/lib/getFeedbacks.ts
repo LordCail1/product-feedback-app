@@ -8,7 +8,7 @@ export default async function getFeedbacks(): Promise<
 	try {
         await connectMongoose()
 		const feedbacks: ProductRequestBaseType[] =
-			await ProductRequestModel.find({}, null, {maxTimeMS: 30000})
+			await ProductRequestModel.find()
 		return feedbacks
 	} catch (error) {
 		console.log("there was an error fetching all product requests", error)
