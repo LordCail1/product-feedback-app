@@ -1,8 +1,10 @@
-import React from "react"
 import "../globals.css"
-import type { Metadata } from "next"
 import { Jost } from "next/font/google"
 import { ReactNode } from "react"
+import React from "react"
+import type { Metadata } from "next"
+import Sidebar from "./components/Sidebar/Sidebar"
+import FeedbackBoardTitleMobile from "./components/FeedbackBoardTitleMobile/FeedbackBoardTitleMobile"
 
 export const metadata: Metadata = {
 	title: "Product Feedback",
@@ -23,10 +25,15 @@ type Props = {
 export default function Layout({ mainFeedbacks, optionsMenu }: Props) {
 	return (
 		<section
-			className={`relative pt-24 flex justify-center ${jost.className}`}
+			className={`relative md:mx-10 flex flex-col justify-center md:pt-14 lg:flex-row lg:items-start lg:pt-24 ${jost.className}`}
 		>
 			{optionsMenu}
+			<FeedbackBoardTitleMobile />
+			{
+				//*title goe shere
+			}
 			{mainFeedbacks}
+			<Sidebar />
 		</section>
 	)
 }

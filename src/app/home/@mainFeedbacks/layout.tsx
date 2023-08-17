@@ -7,7 +7,7 @@ type Props = {
 
 export default function Layout({feedbackList, navbar}: Props) {
     return (
-        <section className="relative ml-8 flex basis-[825px] flex-col">
+        <section className="relative lg:ml-8 flex basis-[825px] flex-col ml-0">
 			{navbar}
             {feedbackList}
 		</section>

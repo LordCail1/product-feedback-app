@@ -7,11 +7,11 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import Image from "next/image"
-import IconArrowUp from "@/assets/svg/IconArrowUpWhite.svg"
-import SuggestionNavbarDropdownMenuRadioItem from "./SuggestionNavbarDropdownMenuRadioItem/SuggestionNavbarDropdownMenuRadioItem"
-import { useState } from "react"
 import { useAppSelector } from "@/hooks/redux/reduxHooks"
+import { useState } from "react"
+import IconArrowUp from "@/assets/svg/IconArrowUpWhite.svg"
+import Image from "next/image"
+import SuggestionNavbarDropdownMenuRadioItem from "./SuggestionNavbarDropdownMenuRadioItem/SuggestionNavbarDropdownMenuRadioItem"
 
 export default function SuggestionNavbarDropdownMenu() {
 	const filterValue = useAppSelector(
@@ -21,7 +21,7 @@ export default function SuggestionNavbarDropdownMenu() {
 
 	return (
 		<DropdownMenu onOpenChange={() => setExpanded(!expanded)}>
-			<DropdownMenuTrigger className="ml-10 flex items-center">
+			<DropdownMenuTrigger className="md:ml-10 flex items-center">
 				<span className="text-sm font-normal">
 					Sort By : <span className="font-bold">Most Upvotes</span>
 				</span>

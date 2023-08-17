@@ -5,7 +5,6 @@ import getFeedbacks from "@/lib/getFeedbacks"
 
 export default async function FeedbackList() {
 	const feedbacks: ProductRequestBaseType[] = await getFeedbacks()
-	console.log(feedbacks)
 	return (
 		<div className="relative flex w-full flex-col rounded-xl">
 			{feedbacks.map((feedback) => (

@@ -7,12 +7,12 @@ type Props = {
 }
 
 export default function Layout({
-	feedbackBoardTitle,
 	category,
+	feedbackBoardTitle,
 	roadmap,
 }: Props) {
 	return (
-		<section className="flex basis-[255px] shrink-0 flex-col">
+		<section className="hidden max-h-56 shrink-0 basis-[255px] flex-row md:flex lg:max-h-max lg:flex-col">
 			{feedbackBoardTitle}
 			{category}
 			{roadmap}

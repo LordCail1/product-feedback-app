@@ -10,13 +10,13 @@ type Props = {
 
 export default function CategoryRadioGroup({
 	children,
-	defaultValue,
 	className,
+	defaultValue,
 }: Props) {
 	return (
 		<RadioGroup
-			defaultValue={defaultValue}
 			className={className}
+			defaultValue={defaultValue}
 		>
 			{children}
 		</RadioGroup>
