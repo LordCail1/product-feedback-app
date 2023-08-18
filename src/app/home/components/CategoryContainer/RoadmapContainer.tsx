@@ -2,7 +2,7 @@ import Link from "next/link"
 
 export default function RoadmapContainer() {
 	return (
-		<div className="relative mb-6 ml-2 flex flex-grow basis-1/3 flex-col rounded-xl bg-white p-6 lg:ml-0">
+		<div className="relative ml-2 flex flex-col rounded-xl bg-white px-6 pb-6 pt-5 md:mb-6 md:flex-grow md:basis-1/3 lg:ml-0">
 			<div className="mb-6 flex items-center justify-between">
 				<h3 className="text-lg font-bold">Roadmap</h3>
 				<Link

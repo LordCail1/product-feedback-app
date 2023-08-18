@@ -1,8 +1,10 @@
 "use client"
 
-import { useAppSelector } from "@/hooks/redux/reduxHooks"
 import { cn } from "@/lib/utils"
+import { useAppSelector } from "@/hooks/redux/reduxHooks"
 import React from "react"
+import CategoryContainer from "../CategoryContainer/CategoryContainer"
+import RoadmapContainer from "../CategoryContainer/RoadmapContainer"
 
 export default function Sidebar() {
 	const expanded = useAppSelector((state) => state.sidebar.value.expanded)
@@ -10,13 +12,14 @@ export default function Sidebar() {
 	return (
 		<nav
 			className={cn(
-				"absolute -right-72 bottom-0 top-20 w-72 bg-slate-300 transition-transform ease-in-out md:invisible z-10",
+				"absolute p-4 -right-72 bottom-0 top-20 z-10 flex w-72 flex-col bg-ghost_white transition-transform ease-in-out md:invisible",
 				{
 					"-translate-x-72 transform": expanded,
 				}
 			)}
 		>
-			Sidebar
+			<CategoryContainer />
+			<RoadmapContainer/>
 		</nav>
 	)
 }
