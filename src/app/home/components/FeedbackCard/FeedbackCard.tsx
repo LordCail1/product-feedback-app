@@ -6,17 +6,17 @@ import { useRouter } from "next/navigation"
 import { useState, useTransition } from "react"
 import NumberCommentsIndicator from "../NumberCommentsIndicator/NumberCommentsIndicator"
 import UpvoteBtn from "@/app/components/UpvoteBtn/UpvoteBtn"
+import Link from "next/link"
 
 type Props = {
 	category: Category
 	commentCount: number | undefined
 	description: string
 	hasBeenUpvoted: boolean
-	id?: string 
+	id?: string
 	title: string
 	upVotes: number
 }
-
 
 export default function FeedbackCard({
 	category,
@@ -49,17 +49,19 @@ export default function FeedbackCard({
 			console.log("something went wrong when sending the request", error)
 		}
 		setIsFetching(false)
-		router.refresh()
+		startTransition(() => {
+			router.refresh()
+		})
 	}
 
 	return (
-		<div className="relative mb-5 flex w-full shrink-0 basis-36 items-start rounded-xl bg-white">
+		<Link href={`/createFeedback/${id}`} className="relative mx-6 mb-5 flex shrink-0 basis-52 cursor-pointer items-start rounded-xl bg-white md:mx-0 md:w-full md:basis-36">
 			<UpvoteBtn
 				count={upVotes}
 				handleUpvote={handleUpvote}
 				hasBeenUpvoted={hasBeenUpvoted}
 			/>
-			<div className="ml-10 mt-8 flex flex-col items-start">
+			<div className="ml-6 mt-8 flex flex-col items-start md:ml-10">
 				<h3 className="mb-1 text-lg font-bold">{title}</h3>
 				<span className="mb-3 text-base font-normal text-ocean_night">
 					{description}
@@ -69,6 +71,6 @@ export default function FeedbackCard({
 				</Badge>
 			</div>
 			<NumberCommentsIndicator count={commentCount} />
-		</div>
+		</Link>
 	)
 }

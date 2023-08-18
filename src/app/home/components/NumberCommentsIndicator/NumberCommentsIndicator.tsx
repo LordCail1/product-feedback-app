@@ -7,7 +7,7 @@ type Props = {
 
 export default function NumberCommentsIndicator({ count }: Props) {
 	return (
-		<div className="absolute right-8 top-16 flex items-center p-1">
+		<div className="bottom-8 right-6 translate-y-0 absolute md:transform md:-translate-y-1/2 md:right-8 md:top-1/2  flex items-center p-1">
 			<Image
 				alt=""
 				className="mr-2"

@@ -1,10 +1,10 @@
 import { RadioGroup } from "@/components/ui/radio-group"
-import { Category } from "@/types"
+import { RadioContainerCategory } from "@/types"
 import React from "react"
 
 type Props = {
 	children: React.ReactNode
-	defaultValue: Category
+	defaultValue: RadioContainerCategory
 	className: string
 }
 

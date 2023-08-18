@@ -6,7 +6,7 @@ import SuggestionNavbarDropdownMenu from "../SuggestionNavbarDropdownMenu/Sugges
 
 export default function SuggestionNavbar() {
 	return (
-		<nav className="mb-6 flex items-center bg-raven_night px-6 py-2 text-white md:rounded-xl md:py-6 md:pl-6 md:pr-4">
+		<nav className="mb-8 md:mb-6 flex items-center bg-raven_night px-6 py-2 text-white md:rounded-xl md:py-6 md:pl-6 md:pr-4">
 			<Image
 				alt=""
 				src={LightBulb}

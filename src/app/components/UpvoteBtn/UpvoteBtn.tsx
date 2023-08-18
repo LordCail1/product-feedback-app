@@ -20,7 +20,7 @@ export default function UpvoteBtn({
 	return (
 		<Button
 			className={cn(
-				"relative ml-8 mt-7 flex h-auto flex-col bg-cotton_ball pb-2 pt-4 hover:bg-pale_phthalo_blue",
+				"absolute bottom-4 left-6 mt-7 flex h-auto items-center bg-cotton_ball hover:bg-pale_phthalo_blue md:relative md:bottom-0 md:left-0 md:ml-8 md:flex-col md:pt-4",
 				{
 					"bg-rainbow_fish": hasBeenUpvoted,
 					"hover:bg-rainbow_fish": hasBeenUpvoted,
@@ -31,7 +31,7 @@ export default function UpvoteBtn({
 		>
 			<Image
 				alt=""
-				className="mb-2"
+				className="mr-2 md:mb-2 md:mr-0"
 				src={hasBeenUpvoted ? IconArrowUpWhite : IconArrowUpBlue}
 			/>
 			<span

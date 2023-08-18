@@ -1,9 +1,9 @@
-import { Category } from "@/types"
+import { Category, RadioContainerCategory } from "@/types"
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 
 type InitialState = {
 	value: {
-		category: Category
+		category: RadioContainerCategory
 	}
 }
 
@@ -17,7 +17,7 @@ const categorySlice = createSlice({
 	name: "category",
 	initialState,
 	reducers: {
-		changeCategory: (state, action: PayloadAction<Category>) => {
+		changeCategory: (state, action: PayloadAction<RadioContainerCategory>) => {
 			state.value.category = action.payload
 		},
 	},

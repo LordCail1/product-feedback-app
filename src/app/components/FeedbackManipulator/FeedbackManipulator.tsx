@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { Form } from "@/components/ui/form"
-import { ProductRequestBaseType } from "@/types"
+import { Category, ProductRequestBaseType, Status } from "@/types"
 import { useForm } from "react-hook-form"
 import { useRouter } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -24,14 +24,24 @@ const FormSchema = z.object({
 	feedbackDetail: z.string().min(1, "Can't be empty"),
 })
 
-export default function FeedbackManipulator() {
+type Props = {
+	editing: boolean
+	feedbackEditingType?: {
+		title: string
+		category: Category
+		status: Status
+		description: string
+	}
+}
+
+export default function FeedbackManipulator({ feedbackEditingType , editing }: Props) {
 	const router = useRouter()
 	const form = useForm<z.infer<typeof FormSchema>>({
 		resolver: zodResolver(FormSchema),
 		defaultValues: {
-			title: "",
-			category: "feature",
-			feedbackDetail: "",
+			title: editing ? feedbackEditingType?.title : "",
+			category: editing ? feedbackEditingType?.category : "feature",
+			feedbackDetail: editing ? feedbackEditingType?.description : "",
 		},
 	})
 

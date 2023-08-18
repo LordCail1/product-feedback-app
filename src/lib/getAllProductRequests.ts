@@ -2,11 +2,11 @@ import ProductRequestModel from "@/models/productRequestSchema"
 import { ProductRequestBaseType } from "@/types"
 import connectMongoose from "./connectMongoose"
 
-export default async function getFeedbacks(): Promise<
+export default async function getAllProductRequests(): Promise<
 	ProductRequestBaseType[]
 > {
 	try {
-        await connectMongoose()
+		await connectMongoose()
 		const feedbacks: ProductRequestBaseType[] =
 			await ProductRequestModel.find()
 		return feedbacks

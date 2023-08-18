@@ -1,10 +1,18 @@
 import { Document, Types } from "mongoose"
 
+/**This type is used for selecitng different categories to view */
+export type RadioContainerCategory =
+	| "all"
+	| "UI"
+	| "UX"
+	| "enhancement"
+	| "bug"
+	| "feature"
+
 /**
  * This type is used for selecting different categories to view
  */
 export type Category =
-	| "all"
 	| "UI"
 	| "UX"
 	| "enhancement"
@@ -38,7 +46,7 @@ export type FeedbackField =
  * This type is used for the types of a product request
  */
 export interface ProductRequestBaseType {
-	_id?: Types.ObjectId
+	_id?: string
 	title: string
 	category: Category
 	hasBeenUpvoted: boolean
@@ -52,12 +60,12 @@ export interface ProductRequestBaseType {
 export interface ProductRequestModelType
 	extends ProductRequestBaseType,
 		Document {
-	_id: Types.ObjectId
+	_id: string
 }
 
 /**This type is used for the types of a comment*/
 export interface CommentBaseType {
-	_id?: Types.ObjectId
+	_id?: string
 	content: string
 	user: UserBaseType
 	replies?: Comment[]
@@ -65,7 +73,7 @@ export interface CommentBaseType {
 
 /**This type is used for extending the regular 'CommentBase' type with mongoose functionality */
 export interface CommentModelType extends CommentBaseType, Document {
-	_id: Types.ObjectId
+	_id: string
 }
 
 /**This type is used for the types of a user */

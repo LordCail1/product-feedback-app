@@ -1,16 +1,14 @@
 import { ProductRequestBaseType } from "@/types"
 import FeedbackCard from "../FeedbackCard/FeedbackCard"
-import getFeedbacks from "@/lib/getFeedbacks"
-
+import getAllProductRequests from "@/lib/getAllProductRequests"
 
 export default async function FeedbackList() {
-	const feedbacks: ProductRequestBaseType[] = await getFeedbacks()
+	const feedbacks: ProductRequestBaseType[] = await getAllProductRequests()
 	return (
 		<div className="relative flex w-full flex-col rounded-xl">
 			{feedbacks.map((feedback) => (
 				<FeedbackCard
 					category={feedback.category}
-					
 					commentCount={feedback.comments?.length}
 					description={feedback.description}
 					hasBeenUpvoted={feedback.hasBeenUpvoted}
