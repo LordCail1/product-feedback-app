@@ -9,6 +9,7 @@ import { FieldError } from "react-hook-form"
 import { Input } from "@/components/ui/input"
 import FieldDescription from "../../FieldDescription/FieldDescription"
 import FieldTitle from "../../FieldTitle/FieldTitle"
+import { cn } from "@/lib/utils"
 
 type Props = {
 	control: any
@@ -33,13 +34,12 @@ export default function FeedbackTitleFormField({
 						<Input
 							{...field}
 							className={
-								"bg-ghost_white text-base font-normal transition-colors hover:border-solid hover:border-rainbow_fish border-transparent focus-visible:ring-1"
+								cn("bg-ghost_white text-base font-normal transition-colors hover:border-solid hover:border-rainbow_fish border-transparent focus-visible:ring-1",{
+									"border-solid": error,
+									"border-2": error,
+									"border-red-500": error,
+								})
 							}
-							style={{
-								borderColor: error ? "red" : "",
-								borderWidth: error ? "2px" : "",
-								borderStyle: error ? "solid" : "",
-							}}
 						/>
 					</FormControl>
 					<FormMessage />

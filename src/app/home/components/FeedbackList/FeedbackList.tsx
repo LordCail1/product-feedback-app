@@ -10,6 +10,7 @@ export default async function FeedbackList() {
 			{feedbacks.map((feedback) => (
 				<FeedbackCard
 					category={feedback.category}
+					
 					commentCount={feedback.comments?.length}
 					description={feedback.description}
 					hasBeenUpvoted={feedback.hasBeenUpvoted}

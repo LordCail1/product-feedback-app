@@ -1,10 +1,12 @@
 import "../globals.css"
 import { Jost } from "next/font/google"
 import { ReactNode } from "react"
-import React from "react"
-import type { Metadata } from "next"
-import Sidebar from "./components/Sidebar/Sidebar"
+import DarkOverlay from "./components/DarkOverlay/DarkOverlay"
 import FeedbackBoardTitleMobile from "./components/FeedbackBoardTitleMobile/FeedbackBoardTitleMobile"
+import OptionsMenu from "./components/OptionsMenu/OptionsMenu"
+import React from "react"
+import Sidebar from "./components/Sidebar/Sidebar"
+import type { Metadata } from "next"
 
 export const metadata: Metadata = {
 	title: "Product Feedback",
@@ -18,21 +20,19 @@ const jost = Jost({
 })
 
 type Props = {
-	mainFeedbacks: ReactNode
-	optionsMenu: ReactNode
+	children: ReactNode
 }
 
-export default function Layout({ mainFeedbacks, optionsMenu }: Props) {
+export default function Layout({ children}: Props) {
 	return (
 		<section
+
 			className={`relative md:mx-10 flex flex-col justify-center md:pt-14 lg:flex-row lg:items-start lg:pt-24 ${jost.className}`}
 		>
-			{optionsMenu}
+			<OptionsMenu/>
 			<FeedbackBoardTitleMobile />
-			{
-				//*title goe shere
-			}
-			{mainFeedbacks}
+			<DarkOverlay />
+			{children}
 			<Sidebar />
 		</section>
 	)

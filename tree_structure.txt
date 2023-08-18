@@ -3,107 +3,159 @@
 ├── .gitignore
 ├── .vscode
 │   └── settings.json
-├── Dockerfile
+├── Dockerfile.development
+├── Dockerfile.production
 ├── README.md
-├── docker-compose.yml
-├── frontend-mentor_resources
-│   └── product-feedback-app
-│       ├── .DS_Store
-│       ├── .gitignore
-│       ├── README-template.md
-│       ├── README.md
-│       ├── preview.jpg
-│       └── starter-code
-│           ├── .DS_Store
-│           ├── .gitignore
-│           ├── assets
-│           │   ├── favicon-32x32.png
-│           │   ├── shared
-│           │   │   ├── icon-arrow-down.svg
-│           │   │   ├── icon-arrow-left.svg
-│           │   │   ├── icon-arrow-up.svg
-│           │   │   ├── icon-check.svg
-│           │   │   ├── icon-comments.svg
-│           │   │   ├── icon-edit-feedback.svg
-│           │   │   ├── icon-new-feedback.svg
-│           │   │   ├── icon-plus.svg
-│           │   │   └── mobile
-│           │   │       ├── icon-close.svg
-│           │   │       └── icon-hamburger.svg
-│           │   ├── suggestions
-│           │   │   ├── desktop
-│           │   │   │   └── desktopBackgroundHeaderImage.png
-│           │   │   ├── icon-suggestions.svg
-│           │   │   ├── illustration-empty.svg
-│           │   │   ├── mobile
-│           │   │   │   └── background-header.png
-│           │   │   └── tablet
-│           │   │       └── background-header.png
-│           │   └── user-images
-│           │       ├── image-anne.jpg
-│           │       ├── image-elijah.jpg
-│           │       ├── image-george.jpg
-│           │       ├── image-jackson.jpg
-│           │       ├── image-james.jpg
-│           │       ├── image-javier.jpg
-│           │       ├── image-judah.jpg
-│           │       ├── image-roxanne.jpg
-│           │       ├── image-ryan.jpg
-│           │       ├── image-suzanne.jpg
-│           │       ├── image-thomas.jpg
-│           │       ├── image-victoria.jpg
-│           │       └── image-zena.jpg
-│           ├── data.json
-│           ├── data_v2.json
-│           ├── feedback-detail.html
-│           ├── feedback-edit.html
-│           ├── feedback-new.html
-│           ├── index.html
-│           └── roadmap.html
+├── components.json
+├── development.down.sh
+├── development.rebuild.sh
+├── development.sh
+├── docker-compose.development.yml
+├── docker-compose.production.yml
 ├── next-env.d.ts
 ├── next.config.js
 ├── package-lock.json
 ├── package.json
 ├── postcss.config.js
+├── production.down.sh
+├── production.rebuild.sh
+├── production.sh
 ├── public
 │   ├── next.svg
 │   └── vercel.svg
 ├── src
 │   ├── app
-│   │   ├── @mainFeedbacks
-│   │   │   ├── default.tsx
+│   │   ├── api
+│   │   │   ├── productRequest
+│   │   │   │   └── route.ts
+│   │   │   └── vote
+│   │   │       └── route.ts
+│   │   ├── components
+│   │   │   ├── FeedbackManipulator
+│   │   │   │   ├── FeedbackManipulator.tsx
+│   │   │   │   ├── FieldDescription
+│   │   │   │   │   └── FieldDescription.tsx
+│   │   │   │   ├── FieldTitle
+│   │   │   │   │   └── FieldTitle.tsx
+│   │   │   │   └── Fields
+│   │   │   │       ├── FeedbackCategoryFormField
+│   │   │   │       │   └── FeedbackCategoryFormField.tsx
+│   │   │   │       ├── FeedbackDetailFormField
+│   │   │   │       │   └── FeedbackDetailFormField.tsx
+│   │   │   │       └── FeedbackTitleFormField
+│   │   │   │           └── FeedbackTitleFormField.tsx
+│   │   │   ├── Revalidator
+│   │   │   │   └── Revalidator.tsx
+│   │   │   ├── SuggestionNavbar
+│   │   │   │   └── SuggestionNavbar.tsx
+│   │   │   ├── SuggestionNavbarDropdownMenu
+│   │   │   │   ├── SuggestionNavbarDropdownMenu.tsx
+│   │   │   │   └── SuggestionNavbarDropdownMenuRadioItem
+│   │   │   │       └── SuggestionNavbarDropdownMenuRadioItem.tsx
+│   │   │   └── UpvoteBtn
+│   │   │       └── UpvoteBtn.tsx
+│   │   ├── createFeedback
+│   │   │   ├── error.tsx
+│   │   │   ├── loading.tsx
 │   │   │   └── page.tsx
-│   │   ├── @optionsMenu
-│   │   │   ├── @category
+│   │   ├── error.tsx
+│   │   ├── globals.css
+│   │   ├── home
+│   │   │   ├── @mainFeedbacks
+│   │   │   │   ├── @feedbackList
+│   │   │   │   │   ├── error.tsx
+│   │   │   │   │   ├── loading.tsx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── @navbar
+│   │   │   │   │   ├── error.tsx
+│   │   │   │   │   ├── loading.tsx
+│   │   │   │   │   └── page.tsx
 │   │   │   │   ├── default.tsx
+│   │   │   │   ├── layout.tsx
 │   │   │   │   └── page.tsx
-│   │   │   ├── @feedbackBoardTitle
-│   │   │   │   └── page.tsx
-│   │   │   ├── @roadmap
+│   │   │   ├── @optionsMenu
+│   │   │   │   ├── @category
+│   │   │   │   │   ├── default.tsx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── @feedbackBoardTitle
+│   │   │   │   │   ├── error.tsx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── @roadmap
+│   │   │   │   │   ├── default.tsx
+│   │   │   │   │   └── page.tsx
 │   │   │   │   ├── default.tsx
+│   │   │   │   ├── layout.tsx
 │   │   │   │   └── page.tsx
-│   │   │   ├── default.tsx
+│   │   │   ├── components
+│   │   │   │   ├── CategoryRadioGroup
+│   │   │   │   │   └── CategoryRadioGroup.tsx
+│   │   │   │   ├── CategoryRadioGroupItem
+│   │   │   │   │   └── CategoryRadioGroupItem.tsx
+│   │   │   │   ├── DarkOverlay
+│   │   │   │   │   └── DarkOverlay.tsx
+│   │   │   │   ├── FeedbackBoardTitleDesktop
+│   │   │   │   │   └── FeedbackBoardTitleDesktop.tsx
+│   │   │   │   ├── FeedbackBoardTitleMobile
+│   │   │   │   │   └── FeedbackBoardTitleMobile.tsx
+│   │   │   │   ├── FeedbackCard
+│   │   │   │   │   └── FeedbackCard.tsx
+│   │   │   │   ├── FeedbackList
+│   │   │   │   │   └── FeedbackList.tsx
+│   │   │   │   ├── HamburgerBtn
+│   │   │   │   │   └── HamburgerBtn.tsx
+│   │   │   │   ├── NumberCommentsIndicator
+│   │   │   │   │   └── NumberCommentsIndicator.tsx
+│   │   │   │   └── Sidebar
+│   │   │   │       └── Sidebar.tsx
+│   │   │   ├── error.tsx
 │   │   │   ├── layout.tsx
 │   │   │   └── page.tsx
-│   │   ├── api
-│   │   │   └── route.ts
-│   │   ├── components
-│   │   │   └── CategoryBtn
-│   │   │       └── CategoryBtn.tsx
-│   │   ├── globals.css
 │   │   ├── icon.png
 │   │   ├── layout.tsx
-│   │   └── page.tsx
+│   │   ├── page.tsx
+│   │   └── roadmap
+│   │       ├── error.tsx
+│   │       ├── layout.tsx
+│   │       ├── loading.tsx
+│   │       └── page.tsx
 │   ├── assets
 │   │   ├── colors.ts
-│   │   └── desktopBackgroundHeaderImage.png
+│   │   ├── desktopBackgroundHeaderImage.png
+│   │   └── svg
+│   │       ├── IconArrowLeft.svg
+│   │       ├── IconArrowUpBlue.svg
+│   │       ├── IconArrowUpWhite.svg
+│   │       ├── IconCheck.svg
+│   │       ├── IconClose.svg
+│   │       ├── IconComments.svg
+│   │       ├── IconHamburger.svg
+│   │       ├── IconNewFeedback.svg
+│   │       ├── IconPlus.svg
+│   │       └── LightBulb.svg
+│   ├── components
+│   │   └── ui
+│   │       ├── badge.tsx
+│   │       ├── button.tsx
+│   │       ├── dropdown-menu.tsx
+│   │       ├── form.tsx
+│   │       ├── input.tsx
+│   │       ├── label.tsx
+│   │       ├── radio-group.tsx
+│   │       ├── select.tsx
+│   │       ├── skeleton.tsx
+│   │       └── textarea.tsx
 │   ├── features
-│   │   └── categorySlice.ts
+│   │   ├── categorySlice.ts
+│   │   ├── sidebarSlice.ts
+│   │   └── suggestionsFilterSlice.ts
 │   ├── hooks
 │   │   └── redux
 │   │       └── reduxHooks.ts
-│   ├── libs
-│   │   └── connectMongoose.ts
+│   ├── lib
+│   │   ├── connectMongoose.ts
+│   │   ├── getFeedbacks.ts
+│   │   └── utils.ts
+│   ├── middleware.ts
 │   ├── models
 │   │   ├── commentSchema.ts
 │   │   ├── productRequestSchema.ts
@@ -112,7 +164,12 @@
 │   │   └── ReduxProvider.tsx
 │   ├── store
 │   │   └── store.ts
-│   └── types.d.ts
+│   ├── types.ts
+│   └── validators
+│       ├── commentValidator.ts
+│       ├── commonValidators.ts
+│       ├── productRequestValidator.ts
+│       └── userValidator.ts
 ├── tailwind.config.js
 ├── tree_structure.txt
 └── tsconfig.json

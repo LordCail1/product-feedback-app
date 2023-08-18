@@ -7,6 +7,7 @@ import React, { useState } from "react"
 import { Category } from "@/types"
 import { RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@/components/ui/label"
+import { cn } from "@/lib/utils"
 
 type Props = {
 	categoryValue: Category
@@ -29,18 +30,14 @@ export default function CategoryRadioGroupItem({
 
 	return (
 		<div
-			className="mb-3 flex grow-0 cursor-pointer items-center justify-center rounded-lg transition-colors"
+			className={cn("mb-3 flex grow-0 cursor-pointer items-center justify-center rounded-lg transition-colors bg-cotton_ball text-rainbow_fish", {
+				"bg-pale_phthalo_blue": isHovering,
+				"bg-rainbow_fish": condition,
+				"text-white": condition,
+			})}
 			onClick={handleChangeCategoryClick}
 			onMouseEnter={() => setIsHovering(true)}
 			onMouseLeave={() => setIsHovering(false)}
-			style={{
-				backgroundColor: condition
-					? colors.rainbow_fish
-					: isHovering
-					? colors.pale_phthalo_blue
-					: colors.cotton_ball,
-				color: condition ? colors.white : colors.rainbow_fish,
-			}}
 		>
 			<Label
 				className="cursor-pointer capitalize py-2 px-4 font-semibold"

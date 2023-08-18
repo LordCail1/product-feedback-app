@@ -1,9 +1,8 @@
-import { Button } from "@/components/ui/button"
-import IconPlus from "@/assets/svg/IconPlus.svg"
+import CreateFeedbackLink from "@/app/home/components/CreateFeedbackLink/CreateFeedbackLink"
 import Image from "next/image"
 import LightBulb from "@/assets/svg/LightBulb.svg"
-import Link from "next/link"
 import SuggestionNavbarDropdownMenu from "../SuggestionNavbarDropdownMenu/SuggestionNavbarDropdownMenu"
+
 
 export default function SuggestionNavbar() {
 	return (
@@ -17,19 +16,7 @@ export default function SuggestionNavbar() {
 				6 Suggestions
 			</h3>
 			<SuggestionNavbarDropdownMenu />
-			<Button
-				className="ml-auto flex items-center bg-singapore_orchid hover:bg-after_party_pink"
-				asChild
-			>
-				<Link href="/createFeedback">
-					<Image
-						src={IconPlus}
-						alt=""
-						className="mr-2"
-					/>
-					Add Feedback
-				</Link>
-			</Button>
+			<CreateFeedbackLink />
 		</nav>
 	)
 }

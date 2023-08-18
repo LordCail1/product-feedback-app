@@ -12,6 +12,7 @@ import { useState } from "react"
 import IconArrowUp from "@/assets/svg/IconArrowUpWhite.svg"
 import Image from "next/image"
 import SuggestionNavbarDropdownMenuRadioItem from "./SuggestionNavbarDropdownMenuRadioItem/SuggestionNavbarDropdownMenuRadioItem"
+import { cn } from "@/lib/utils"
 
 export default function SuggestionNavbarDropdownMenu() {
 	const filterValue = useAppSelector(
@@ -21,17 +22,16 @@ export default function SuggestionNavbarDropdownMenu() {
 
 	return (
 		<DropdownMenu onOpenChange={() => setExpanded(!expanded)}>
-			<DropdownMenuTrigger className="md:ml-10 flex items-center">
+			<DropdownMenuTrigger className="flex items-center md:ml-10">
 				<span className="text-sm font-normal">
 					Sort By : <span className="font-bold">Most Upvotes</span>
 				</span>
 				<Image
 					src={IconArrowUp}
 					alt=""
-					className="ml-2 transition-transform"
-					style={{
-						transform: expanded ? "rotate(180deg)" : "rotate(0deg)",
-					}}
+					className={cn("ml-2 transition-transform", {
+						"rotate-180 transform": expanded,
+					})}
 				/>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent className="p-0">

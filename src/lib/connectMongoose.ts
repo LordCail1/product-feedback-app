@@ -1,8 +1,11 @@
 import mongoose from "mongoose"
 
+
+
+
 export default async function connectMongoose() {
 	try {
-		mongoose.connect("mongodb://db:27017/product-feedback-app")
+		mongoose.connect(process.env.MONGO_URI as string)
 		console.log("connected to mongoDB database!")
 	} catch (error) {
 		console.log(

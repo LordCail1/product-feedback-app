@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
 		res = await request.json()
 	} catch (error) {
 		return NextResponse.json(
-			{ message: "Failed to parse JSON object" },
+			{ message: "failed to parse JSON object" },
 			{ status: 400 }
 		)
 	}

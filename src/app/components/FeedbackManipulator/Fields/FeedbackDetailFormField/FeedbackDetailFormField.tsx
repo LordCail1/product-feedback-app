@@ -4,6 +4,7 @@ import { Textarea } from "@/components/ui/textarea"
 import {FormControl,FormField,FormItem,FormMessage,} from "@/components/ui/form"
 import FieldDescription from "../../FieldDescription/FieldDescription"
 import FieldTitle from "../../FieldTitle/FieldTitle"
+import { cn } from "@/lib/utils"
 
 type Props = {
 	control: any
@@ -26,12 +27,11 @@ export default function FeedbackDetailFormField({ name, control, error }: Props)
 					<FormControl>
 						<Textarea
 							{...field}
-							className="h-24 resize-none bg-ghost_white text-base font-normal border-transparent transition-colors hover:border-solid hover:border-rainbow_fish focus-visible:ring-1"
-							style={{
-								borderColor: error ? "red" : "",
-								borderWidth: error ? "2px" : "",
-								borderStyle: error ? "solid" : "",
-							}}
+							className={cn("h-24 resize-none bg-ghost_white text-base font-normal border-transparent transition-colors hover:border-solid hover:border-rainbow_fish focus-visible:ring-1", {
+								"border-solid": error,
+								"border-2": error,
+								"border-red-500": error,
+							})}
 						/>
 					</FormControl>
 					<FormMessage />

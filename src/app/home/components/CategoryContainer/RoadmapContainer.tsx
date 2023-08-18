@@ -1,13 +1,13 @@
 import Link from "next/link"
 
-export default function Page() {
+export default function RoadmapContainer() {
 	return (
-		<div className="relative mb-6 flex flex-col rounded-xl bg-white p-6 flex-grow ml-2 lg:ml-0 basis-1/3">
-			<div className="mb-6 flex justify-between items-center">
-				<h3 className="font-bold text-lg">Roadmap</h3>
+		<div className="relative mb-6 ml-2 flex flex-grow basis-1/3 flex-col rounded-xl bg-white p-6 lg:ml-0">
+			<div className="mb-6 flex items-center justify-between">
+				<h3 className="text-lg font-bold">Roadmap</h3>
 				<Link
 					href="/roadmap"
-					className="font-semibold text-rainbow_fish underline transition-colors hover:text-periwinkle_blue text-base"
+					className="text-base font-semibold text-rainbow_fish underline transition-colors hover:text-periwinkle_blue"
 				>
 					View
 				</Link>
