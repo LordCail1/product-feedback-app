@@ -61,7 +61,8 @@ export async function POST(request: NextRequest) {
 	}
 }
 
-export default async function PUT(request: NextRequest) {
+export async function PUT(request: NextRequest) {
+	
 	let res: ProductRequestModelType
 	try {
 		res = await request.json()
@@ -73,6 +74,7 @@ export default async function PUT(request: NextRequest) {
 	}
 
 	let validateData: {
+		_id?: string | undefined
 		category: "all" | "UI" | "UX" | "enhancement" | "bug" | "feature"
 		comments?: string[] | undefined
 		description: string
@@ -95,7 +97,32 @@ export default async function PUT(request: NextRequest) {
 		)
 	}
 
-	const { category, description, status, title, upvotes, _id } = res
+	const { category, description, status, title, _id } = res
+	
+
+	let productRequest: ProductRequestModelType | null
+
+	try {
+		await connectMongoose() 
+		productRequest = await ProductRequestModel.findById(_id) 
+		if (!productRequest) {
+			return NextResponse.json({message: "failed to retrieve product request from the database."}, {status: 400})
+		}
+		console.log(productRequest)
+		productRequest.title = title
+		productRequest.category = category
+		productRequest.description = description
+		productRequest.status = status
+		await productRequest.save()
+		return NextResponse.json({message: "success"}, {status: 200})
+ 	}
+	catch(error) {
+		console.log("failed to retrieve product request from the database.", error)
+	}
+
+	
+
+	
 
 
 }

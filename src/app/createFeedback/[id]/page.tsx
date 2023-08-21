@@ -20,10 +20,12 @@ export default async function Page({ params: { id } }: Props) {
 			<FeedbackManipulator
 				editing={true}
 				feedbackEditingType={{
-					title: feedback.title,
 					category: feedback.category,
 					description: feedback.description,
 					status: feedback.status,
+					title: feedback.title,
+					upvotes: feedback.upvotes,
+					_id: id
 				}}
 			/>
 		</section>

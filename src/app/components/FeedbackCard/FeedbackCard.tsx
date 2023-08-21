@@ -37,7 +37,7 @@ export default function FeedbackCard({
 		e.preventDefault()
 		setIsFetching(true)
 		try {
-			const res = await fetch(`http://localhost:3000/api/vote`, {
+			const res = await fetch(`/api/vote`, {
 				method: "PUT",
 				body: JSON.stringify({ id }),
 				headers: {

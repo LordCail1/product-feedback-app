@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Form } from "@/components/ui/form"
 import { Category, ProductRequestBaseType, Status } from "@/types"
 import { useForm } from "react-hook-form"
-import { useRouter } from "next/navigation"
+import {  useRouter } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import FeedbackCategoryFormField from "@/app/components/FeedbackManipulator/Fields/FeedbackCategoryFormField/FeedbackCategoryFormField"
@@ -21,20 +21,28 @@ const FormSchema = z.object({
 		.min(1, "Can't be empty")
 		.max(50, "Can't be more than 50 characters!"),
 	category: z.enum(["UI", "UX", "enhancement", "bug", "feature"]),
-	feedbackDetail: z.string().min(1, "Can't be empty").max(500, "Can't be more than 500 characters!"),
+	feedbackDetail: z
+		.string()
+		.min(1, "Can't be empty")
+		.max(500, "Can't be more than 500 characters!"),
 })
 
 type Props = {
 	editing: boolean
 	feedbackEditingType?: {
+		_id: string
 		title: string
 		category: Category
 		status: Status
 		description: string
+		upvotes: number
 	}
 }
 
-export default function FeedbackManipulator({ feedbackEditingType , editing }: Props) {
+export default function FeedbackManipulator({
+	feedbackEditingType,
+	editing,
+}: Props) {
 	const router = useRouter()
 	const form = useForm<z.infer<typeof FormSchema>>({
 		resolver: zodResolver(FormSchema),
@@ -50,26 +58,70 @@ export default function FeedbackManipulator({ feedbackEditingType , editing }: P
 	} = form
 
 	async function onSubmit(data: z.infer<typeof FormSchema>) {
+		
 		try {
-			const body: ProductRequestBaseType = {
-				title: data.title,
-				category: data.category,
-				upvotes: 0,
-				hasBeenUpvoted: false,
-				status: "suggestion",
-				description: data.feedbackDetail,
+			if (editing) {
+				if (
+					feedbackEditingType?.title &&
+					feedbackEditingType?.category &&
+					feedbackEditingType?.status &&
+					feedbackEditingType?.description &&
+					feedbackEditingType?.upvotes &&
+					feedbackEditingType._id
+				) {
+					const body: ProductRequestBaseType = {
+						_id: feedbackEditingType._id,
+						category: data.category,
+						description: data.feedbackDetail,
+						hasBeenUpvoted: false,
+						status: feedbackEditingType.status,
+						title: data.title,
+						upvotes: feedbackEditingType.upvotes,
+					}
+					
+					console.log('yo')
+					const res = await fetch(`/api/productRequest`, {
+						method: "PUT",
+						body: JSON.stringify(body),
+						headers: {
+							"Content-Type": "application/json",
+						},
+					})
+					const response = await res.json()
+					console.log(response)
+
+					if (!res.ok)
+						throw new Error("Something went wrong with the request")
+					router.push("/home")
+				} else {
+					throw new Error(
+						"Some values are missing from the form to complete your request"
+					)
+				}
+			} else {
+				const body: ProductRequestBaseType = {
+					title: data.title,
+					category: data.category,
+					upvotes: 0,
+					hasBeenUpvoted: false,
+					status: "suggestion",
+					description: data.feedbackDetail,
+				}
+
+				const res = await fetch(
+					`/api/productRequest`,
+					{
+						method: "POST",
+						body: JSON.stringify(body),
+						headers: {
+							"Content-Type": "application/json",
+						},
+					}
+				)
+
+				if (!res.ok) throw new Error("Something went wrong")
+				router.push("/home")
 			}
-
-			const res = await fetch("http://localhost:3000/api/productRequest", {
-				method: "POST",
-				body: JSON.stringify(body),
-				headers: {
-					"Content-Type": "application/json",
-				},
-			})
-
-			if (!res.ok) throw new Error("Something went wrong")
-			router.push("/home")
 		} catch (error) {
 			console.log("there was an error sending the data", error)
 		}
