@@ -1,4 +1,4 @@
-import FeedbackList from "../FeedbackList/FeedbackList"
+import FeedbackList from "@/app/components/FeedbackList/FeedbackList"
 import React from "react"
 import Revalidator from "@/app/components/Revalidator/Revalidator"
 import SuggestionNavbar from "@/app/components/SuggestionNavbar/SuggestionNavbar"

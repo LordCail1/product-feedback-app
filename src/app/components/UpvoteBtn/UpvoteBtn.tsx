@@ -1,14 +1,15 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
+import { MouseEvent } from "react"
 import IconArrowUpBlue from "@/assets/svg/IconArrowUpBlue.svg"
 import IconArrowUpWhite from "@/assets/svg/IconArrowUpWhite.svg"
 import Image from "next/image"
-import { cn } from "@/lib/utils"
 
 type Props = {
 	count: number
-	handleUpvote: () => Promise<void>
+	handleUpvote: (e: MouseEvent<HTMLButtonElement>) => Promise<void>
 	hasBeenUpvoted: boolean
 }
 

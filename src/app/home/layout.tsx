@@ -1,11 +1,11 @@
 import "../globals.css"
 import { Jost } from "next/font/google"
 import { ReactNode } from "react"
-import DarkOverlay from "./components/DarkOverlay/DarkOverlay"
-import FeedbackBoardTitleMobile from "./components/FeedbackBoardTitleMobile/FeedbackBoardTitleMobile"
-import OptionsMenu from "./components/OptionsMenu/OptionsMenu"
+import DarkOverlay from "../components/DarkOverlay/DarkOverlay"
+import FeedbackBoardTitleMobile from "../components/FeedbackBoardTitleMobile/FeedbackBoardTitleMobile"
+import OptionsMenu from "../components/OptionsMenu/OptionsMenu"
 import React from "react"
-import Sidebar from "./components/Sidebar/Sidebar"
+import Sidebar from "../components/Sidebar/Sidebar"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {

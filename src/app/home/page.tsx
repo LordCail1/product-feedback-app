@@ -1,4 +1,4 @@
-import MainFeedback from "./components/MainFeedback/MainFeedback"
+import MainFeedback from "../components/MainFeedback/MainFeedback"
 
 
 export const revalidate = 0

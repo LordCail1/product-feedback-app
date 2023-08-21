@@ -1,6 +1,6 @@
 import Image from "next/image"
 import desktopBackgroundHeaderImage from "@/assets/desktopBackgroundHeaderImage.png"
-import HamburgerBtn from "../HamburgerBtn/HamburgerBtn"
+import HamburgerBtn from "@/app/components/HamburgerBtn/HamburgerBtn"
 
 
 export default function FeedbackBoardTitleMobile() {

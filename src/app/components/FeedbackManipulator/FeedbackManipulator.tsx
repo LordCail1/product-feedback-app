@@ -21,7 +21,7 @@ const FormSchema = z.object({
 		.min(1, "Can't be empty")
 		.max(50, "Can't be more than 50 characters!"),
 	category: z.enum(["UI", "UX", "enhancement", "bug", "feature"]),
-	feedbackDetail: z.string().min(1, "Can't be empty"),
+	feedbackDetail: z.string().min(1, "Can't be empty").max(500, "Can't be more than 500 characters!"),
 })
 
 type Props = {

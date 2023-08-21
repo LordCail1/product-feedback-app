@@ -1,7 +1,7 @@
 "use client"
 
-import CategoryRadioGroup from "@/app/home/components/CategoryRadioGroup/CategoryRadioGroup"
-import CategoryRadioGroupItem from "@/app/home/components/CategoryRadioGroupItem/CategoryRadioGroupItem"
+import CategoryRadioGroup from "@/app/components/CategoryRadioGroup/CategoryRadioGroup"
+import CategoryRadioGroupItem from "@/app/components/CategoryRadioGroupItem/CategoryRadioGroupItem"
 
 export default function CategoryContainer() {
 	return (

@@ -1,4 +1,4 @@
-import CreateFeedbackLink from "@/app/home/components/CreateFeedbackLink/CreateFeedbackLink"
+import CreateFeedbackLink from "@/app/components/CreateFeedbackLink/CreateFeedbackLink"
 import Image from "next/image"
 import LightBulb from "@/assets/svg/LightBulb.svg"
 import SuggestionNavbarDropdownMenu from "../SuggestionNavbarDropdownMenu/SuggestionNavbarDropdownMenu"

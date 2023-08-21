@@ -12,14 +12,14 @@ export default function Sidebar() {
 	return (
 		<nav
 			className={cn(
-				"absolute p-4 -right-72 bottom-0 top-20 z-10 flex w-72 flex-col bg-ghost_white transition-transform ease-in-out md:invisible",
+				"absolute -right-72 bottom-0 top-20 z-10 flex w-72 flex-col bg-ghost_white p-4 transition-transform ease-in-out md:invisible",
 				{
 					"-translate-x-72 transform": expanded,
 				}
 			)}
 		>
 			<CategoryContainer />
-			<RoadmapContainer/>
+			<RoadmapContainer />
 		</nav>
 	)
 }

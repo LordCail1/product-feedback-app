@@ -60,3 +60,42 @@ export async function POST(request: NextRequest) {
 		return NextResponse.error()
 	}
 }
+
+export default async function PUT(request: NextRequest) {
+	let res: ProductRequestModelType
+	try {
+		res = await request.json()
+	} catch (error) {
+		return NextResponse.json(
+			{ message: "failed to parse JSON object" },
+			{ status: 400 }
+		)
+	}
+
+	let validateData: {
+		category: "all" | "UI" | "UX" | "enhancement" | "bug" | "feature"
+		comments?: string[] | undefined
+		description: string
+		hasBeenUpvoted: boolean
+		status: "suggestion" | "planned" | "in-progress" | "live"
+		title: string
+		upvotes: number
+	}
+
+	try {
+		validateData = productRequestValidator.parse(res)
+	} catch (error) {
+		const zodError = error as ZodError
+		const errorMessage = zodError.errors
+			.map((err) => err.message)
+			.join(", ")
+		return NextResponse.json(
+			{ message: `Invalid data submitted, ${errorMessage}` },
+			{ status: 400 }
+		)
+	}
+
+	const { category, description, status, title, upvotes, _id } = res
+
+
+}
