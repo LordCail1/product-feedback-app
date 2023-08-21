@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Form } from "@/components/ui/form"
 import { Category, ProductRequestBaseType, Status } from "@/types"
 import { useForm } from "react-hook-form"
-import {  useRouter } from "next/navigation"
+import { useRouter } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import FeedbackCategoryFormField from "@/app/components/FeedbackManipulator/Fields/FeedbackCategoryFormField/FeedbackCategoryFormField"
@@ -14,18 +14,8 @@ import IconArrowLeft from "@/assets/svg/IconArrowLeft.svg"
 import IconNewFeedback from "@/assets/svg/IconNewFeedback.svg"
 import Image from "next/image"
 import Link from "next/link"
-
-const FormSchema = z.object({
-	title: z
-		.string()
-		.min(1, "Can't be empty")
-		.max(50, "Can't be more than 50 characters!"),
-	category: z.enum(["UI", "UX", "enhancement", "bug", "feature"]),
-	feedbackDetail: z
-		.string()
-		.min(1, "Can't be empty")
-		.max(500, "Can't be more than 500 characters!"),
-})
+import FeedbackUpdateStatusFormField from "./Fields/FeedbackUpdateStatusFormField/FeedbackUpdateStatusFormField"
+import { error } from "console"
 
 type Props = {
 	editing: boolean
@@ -36,20 +26,38 @@ type Props = {
 		status: Status
 		description: string
 		upvotes: number
+		hasBeenUpvoted: boolean
 	}
 }
+
+const CreateProductRequestFormSchema = z.object({
+	title: z
+		.string()
+		.min(1, "Can't be empty")
+		.max(50, "Can't be more than 50 characters!"),
+	category: z.enum(["UI", "UX", "enhancement", "bug", "feature"]),
+	feedbackDetail: z
+		.string()
+		.min(1, "Can't be empty")
+		.max(500, "Can't be more than 500 characters!"),
+	feedbackStatus: z
+		.enum(["suggestion", "planned", "in-progress", "live"])
+		
+})
 
 export default function FeedbackManipulator({
 	feedbackEditingType,
 	editing,
 }: Props) {
 	const router = useRouter()
-	const form = useForm<z.infer<typeof FormSchema>>({
-		resolver: zodResolver(FormSchema),
+
+	const form = useForm<z.infer<typeof CreateProductRequestFormSchema>>({
+		resolver: zodResolver(CreateProductRequestFormSchema),
 		defaultValues: {
 			title: editing ? feedbackEditingType?.title : "",
 			category: editing ? feedbackEditingType?.category : "feature",
 			feedbackDetail: editing ? feedbackEditingType?.description : "",
+			feedbackStatus: editing ? feedbackEditingType?.status : "suggestion",
 		},
 	})
 
@@ -57,8 +65,9 @@ export default function FeedbackManipulator({
 		formState: { errors },
 	} = form
 
-	async function onSubmit(data: z.infer<typeof FormSchema>) {
-		
+	async function onSubmit(
+		data: z.infer<typeof CreateProductRequestFormSchema>
+	) {
 		try {
 			if (editing) {
 				if (
@@ -73,13 +82,11 @@ export default function FeedbackManipulator({
 						_id: feedbackEditingType._id,
 						category: data.category,
 						description: data.feedbackDetail,
-						hasBeenUpvoted: false,
-						status: feedbackEditingType.status,
+						hasBeenUpvoted: feedbackEditingType.hasBeenUpvoted,
+						status: data.feedbackStatus,
 						title: data.title,
 						upvotes: feedbackEditingType.upvotes,
 					}
-					
-					console.log('yo')
 					const res = await fetch(`/api/productRequest`, {
 						method: "PUT",
 						body: JSON.stringify(body),
@@ -108,16 +115,13 @@ export default function FeedbackManipulator({
 					description: data.feedbackDetail,
 				}
 
-				const res = await fetch(
-					`/api/productRequest`,
-					{
-						method: "POST",
-						body: JSON.stringify(body),
-						headers: {
-							"Content-Type": "application/json",
-						},
-					}
-				)
+				const res = await fetch(`/api/productRequest`, {
+					method: "POST",
+					body: JSON.stringify(body),
+					headers: {
+						"Content-Type": "application/json",
+					},
+				})
 
 				if (!res.ok) throw new Error("Something went wrong")
 				router.push("/home")
@@ -131,7 +135,7 @@ export default function FeedbackManipulator({
 		<Form {...form}>
 			<form
 				onSubmit={form.handleSubmit(onSubmit)}
-				className="absolute left-1/2 top-1/2 flex h-[650px] w-[540px] -translate-x-1/2 -translate-y-1/2 transform flex-col rounded-xl bg-white px-11"
+				className="absolute left-1/2 top-1/2 flex w-[540px] -translate-x-1/2 -translate-y-1/2 transform flex-col rounded-xl bg-white px-11 pb-10"
 			>
 				<Image
 					src={IconNewFeedback}
@@ -162,6 +166,13 @@ export default function FeedbackManipulator({
 					control={form}
 					name="category"
 				/>
+				{editing ? (
+					<FeedbackUpdateStatusFormField
+						control={form}
+						error={errors.title}
+						name="feedbackStatus"
+					/>
+				) : null}
 				<FeedbackDetailFormField
 					name="feedbackDetail"
 					control={form}

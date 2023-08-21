@@ -1,29 +1,26 @@
-import { FeedbackField } from "@/types"
 import {
 	FormControl,
 	FormField,
 	FormItem,
 	FormMessage,
 } from "@/components/ui/form"
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectSeparator,
-	SelectTrigger,
-	SelectValue,
-} from "@/components/ui/select"
-import FieldDescription from "../../FieldDescription/FieldDescription"
+import { FeedbackField } from "@/types"
+import React from "react"
+import { FieldError } from "react-hook-form"
 import FieldTitle from "../../FieldTitle/FieldTitle"
+import FieldDescription from "../../FieldDescription/FieldDescription"
+import { Select, SelectContent, SelectItem, SelectSeparator, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 type Props = {
 	control: any
+	error: FieldError | undefined
 	name: FeedbackField
 }
 
-export default function FeedbackCategoryFormField({
-	name,
+export default function FeedbackUpdateStatusFormField({
 	control,
+	error,
+	name,
 }: Props) {
 	return (
 		<FormField
@@ -31,8 +28,9 @@ export default function FeedbackCategoryFormField({
 			name={name}
 			render={({ field }) => (
 				<FormItem className="mb-6">
-					<FieldTitle text="Category" />
-					<FieldDescription text="Choose a category for your feedback" />
+					<FieldTitle text="Update Status" />
+					<FieldDescription text="Change feedback state" />
+
 					<Select
 						onValueChange={field.onChange}
 						defaultValue={field.value}
@@ -44,38 +42,31 @@ export default function FeedbackCategoryFormField({
 						</FormControl>
 						<SelectContent>
 							<SelectItem
-								value="feature"
+								value="suggestion"
 								className="py-4 text-base font-normal"
 							>
-								Feature
+								Suggestion
 							</SelectItem>
 							<SelectSeparator className="my-0" />
 							<SelectItem
-								value="UI"
+								value="planned"
 								className="py-4 text-base font-normal"
 							>
-								UI
+								Planned
 							</SelectItem>
 							<SelectSeparator className="my-0" />
 							<SelectItem
-								value="UX"
+								value="in-progress"
 								className="py-4 text-base font-normal"
 							>
-								UX
+								In-Progress
 							</SelectItem>
 							<SelectSeparator className="my-0" />
 							<SelectItem
-								value="enhancement"
+								value="live"
 								className="py-4 text-base font-normal"
 							>
-								Enhancement
-							</SelectItem>
-							<SelectSeparator className="my-0" />
-							<SelectItem
-								value="bug"
-								className="py-4 text-base font-normal"
-							>
-								Bug
+								Live
 							</SelectItem>
 						</SelectContent>
 					</Select>

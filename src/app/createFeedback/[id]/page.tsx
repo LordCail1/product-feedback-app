@@ -25,7 +25,8 @@ export default async function Page({ params: { id } }: Props) {
 					status: feedback.status,
 					title: feedback.title,
 					upvotes: feedback.upvotes,
-					_id: id
+					_id: id,
+					hasBeenUpvoted: feedback.hasBeenUpvoted
 				}}
 			/>
 		</section>

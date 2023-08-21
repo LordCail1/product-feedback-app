@@ -6,11 +6,11 @@ import { ZodError } from "zod"
 import connectMongoose from "@/lib/connectMongoose"
 import ProductRequestModel from "@/models/productRequestSchema"
 
-/**Post a feedback request */
+/**Post a feedback request. In other words, create */
 export async function POST(request: NextRequest) {
-	let res: ProductRequestBaseType
+	let response: ProductRequestBaseType
 	try {
-		res = await request.json()
+		response = await request.json()
 	} catch (error) {
 		return NextResponse.json(
 			{ message: "failed to parse JSON object" },
@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
 	}
 
 	try {
-		validateData = productRequestValidator.parse(res)
+		validateData = productRequestValidator.parse(response)
 	} catch (error) {
 		const zodError = error as ZodError
 		const errorMessage = zodError.errors
@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
 		)
 	}
 
-	const { category, description, status, title, upvotes } = res
+	const { category, description, status, title, upvotes } = response
 
 	try {
 		await connectMongoose()
