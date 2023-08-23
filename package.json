@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "test": "jest --watch",
     "docker:devUp": "./development.sh",
     "docker:buildUp": "./production.sh",
     "docker:devUp:rebuild": "./development.rebuild.sh",
@@ -45,6 +46,12 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.0.1",
+    "@testing-library/react": "^14.0.0",
+    "eslint-plugin-jest-dom": "^5.0.2",
+    "eslint-plugin-testing-library": "^6.0.0",
+    "jest": "^29.6.3",
+    "jest-environment-jsdom": "^29.6.3",
     "prettier": "2.8",
     "prettier-plugin-tailwindcss": "^0.4.1"
   }
