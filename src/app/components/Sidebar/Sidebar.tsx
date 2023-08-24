@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils"
 import { useAppSelector } from "@/hooks/redux/reduxHooks"
 import React from "react"
 import CategoryContainer from "../CategoryContainer/CategoryContainer"
-import RoadmapContainer from "../CategoryContainer/RoadmapContainer"
+import RoadmapContainer from "../RoadmapContainer/RoadmapContainer"
 
 export default function Sidebar() {
 	const expanded = useAppSelector((state) => state.sidebar.value.expanded)

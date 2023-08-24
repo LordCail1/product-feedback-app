@@ -1,7 +1,7 @@
 import React from "react"
 import FeedbackBoardTitleDesktop from "@/app/components/FeedbackBoardTitleDesktop/FeedbackBoardTitleDesktop"
 import CategoryContainer from "@/app/components/CategoryContainer/CategoryContainer"
-import RoadmapContainer from "@/app/components/CategoryContainer/RoadmapContainer"
+import RoadmapContainer from "@/app/components/RoadmapContainer/RoadmapContainer"
 
 export default function OptionsMenu() {
 	return (

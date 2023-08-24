@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "jest --watch",
+    "test": "jest",
+    "test:watch": "jest --watchAll",
+    "test:coverage": "jest --coverage",
     "docker:devUp": "./development.sh",
     "docker:buildUp": "./production.sh",
     "docker:devUp:rebuild": "./development.rebuild.sh",
@@ -33,7 +35,7 @@
     "eslint-config-next": "13.4.12",
     "lucide-react": "^0.265.0",
     "mongoose": "^7.4.1",
-    "next": "13.4.12",
+    "next": "^13.4.12",
     "postcss": "8.4.27",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -46,7 +48,7 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^6.0.1",
+    "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "eslint-plugin-jest-dom": "^5.0.2",
     "eslint-plugin-testing-library": "^6.0.0",
