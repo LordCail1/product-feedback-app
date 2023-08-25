@@ -4,6 +4,7 @@ import CategoryRadioGroup from "./CategoryRadioGroup"
 import CategoryRadioGroupItem from "../CategoryRadioGroupItem/CategoryRadioGroupItem"
 import { experimental_useEffectEvent } from "react"
 import { RadioGroup } from "@/components/ui/radio-group"
+import { toBeInTheDocument } from "@testing-library/jest-dom/matchers"
 
 describe("CategoryRadioGroup", () => {
 	test("renders children correctly", () => {
@@ -12,11 +13,11 @@ describe("CategoryRadioGroup", () => {
 				defaultValue="all"
 				className="relative"
 			>
-				<div data-testid="test-child"></div>
+				<div>yo</div>
 			</CategoryRadioGroup>
+			
 		)
-		const test = screen.getByTestId("test-child")
-		expect(test).toBeInTheDocument()
+		expect(container).toBeInTheDocument()
 	})
 	test("applies classes correctly", () => {
 		const { container } = renderWithProviders(

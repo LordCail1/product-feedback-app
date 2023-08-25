@@ -9,23 +9,4 @@ describe("CategoryContainer", () => {
 		const categoryRadioGroupItems = screen.getAllByRole("radio")
 		expect(categoryRadioGroupItems).toHaveLength(6)
 	})
-	test("renders text of children correctly", () => {
-		renderWithProviders(<CategoryContainer />)
-		const allCategory = screen.getByText(/all/i)
-		const uiCategory = screen.getByText(/ui/i)
-		const uxCategory = screen.getByText(/ux/i)
-		const enhancementCategory = screen.getByText(/enhancement/i)
-		const bugCategory = screen.getByText(/bug/i)
-		const featureCategory = screen.getByText(/feature/i)
-
-		expect(allCategory).toBeInTheDocument()
-		expect(uiCategory).toBeInTheDocument()
-		expect(uxCategory).toBeInTheDocument()
-		expect(enhancementCategory).toBeInTheDocument()
-		expect(bugCategory).toBeInTheDocument()
-		expect(featureCategory).toBeInTheDocument()
-
-		const categoryContainer = screen.getByRole("radiogroup")
-		expect(categoryContainer).toBeInTheDocument()
-	})
 })

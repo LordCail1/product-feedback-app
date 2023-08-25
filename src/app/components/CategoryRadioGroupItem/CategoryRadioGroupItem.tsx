@@ -20,7 +20,7 @@ export default function CategoryRadioGroupItem({ categoryValue }: Props) {
 	const condition = category === categoryValue
 
 	function handleChangeCategoryClick(e: React.MouseEvent<HTMLDivElement>) {
-		e.preventDefault()
+		// e.preventDefault()
 		dispatch(changeCategory(categoryValue))
 	}
 
@@ -37,6 +37,7 @@ export default function CategoryRadioGroupItem({ categoryValue }: Props) {
 			onClick={handleChangeCategoryClick}
 			onMouseEnter={() => setIsHovering(true)}
 			onMouseLeave={() => setIsHovering(false)}
+
 		>
 			<Label
 				className="cursor-pointer px-4 py-2 font-semibold capitalize"
