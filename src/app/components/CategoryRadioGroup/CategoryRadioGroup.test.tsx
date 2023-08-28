@@ -1,26 +1,22 @@
 import { renderWithProviders } from "@/test/test-utils"
-import { screen } from "@testing-library/react"
+import { render, screen } from "@testing-library/react"
 import CategoryRadioGroup from "./CategoryRadioGroup"
 import CategoryRadioGroupItem from "../CategoryRadioGroupItem/CategoryRadioGroupItem"
-import { experimental_useEffectEvent } from "react"
-import { RadioGroup } from "@/components/ui/radio-group"
-import { toBeInTheDocument } from "@testing-library/jest-dom/matchers"
 
 describe("CategoryRadioGroup", () => {
 	test("renders children correctly", () => {
-		const { container } = renderWithProviders(
+		const { container } = render(
 			<CategoryRadioGroup
 				defaultValue="all"
 				className="relative"
 			>
 				<div>yo</div>
 			</CategoryRadioGroup>
-			
 		)
 		expect(container).toBeInTheDocument()
 	})
 	test("applies classes correctly", () => {
-		const { container } = renderWithProviders(
+		const { container } = render(
 			<CategoryRadioGroup
 				defaultValue="all"
 				className="justify-center p-8"

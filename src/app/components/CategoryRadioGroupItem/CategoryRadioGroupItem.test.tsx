@@ -7,10 +7,8 @@ import userEvent from "@testing-library/user-event"
 import { act } from "react-dom/test-utils"
 
 describe("Component", () => {
-
-
 	test("changes state when button is clicked", async () => {
-		const {store } = renderWithProviders(
+		const { store } = renderWithProviders(
 			<RadioGroup>
 				<CategoryRadioGroupItem categoryValue="all" />
 				<CategoryRadioGroupItem categoryValue="bug" />
@@ -18,7 +16,7 @@ describe("Component", () => {
 		)
 		const allButton = screen.getByLabelText(/all/i)
 		const bugButton = screen.getByLabelText(/bug/i)
-		await act(async() => {
+		await act(async () => {
 			expect(store.getState().category.value.category).toEqual("all")
 			await bugButton.click()
 			expect(store.getState().category.value.category).toEqual("bug")
@@ -26,7 +24,6 @@ describe("Component", () => {
 			expect(store.getState().category.value.category).toEqual("all")
 		})
 	})
-
 
 	test("renders correctly and color changes when hovered", async () => {
 		const { getByRole } = renderWithProviders(
@@ -39,8 +36,5 @@ describe("Component", () => {
 		await userEvent.hover(categoryRadioGroupItem)
 		//making sure the style is changed when hovered
 		expect(categoryRadioGroupItem).toHaveStyle("color: rgb(207, 215, 255")
-
 	})
-
-
 })

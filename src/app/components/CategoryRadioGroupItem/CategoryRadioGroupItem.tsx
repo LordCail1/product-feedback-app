@@ -21,8 +21,11 @@ export default function CategoryRadioGroupItem({ categoryValue }: Props) {
 
 	function handleChangeCategoryClick(e: React.MouseEvent<HTMLDivElement>) {
 		// e.preventDefault()
+		
 		dispatch(changeCategory(categoryValue))
 	}
+
+	
 
 	return (
 		<div

@@ -7,8 +7,7 @@ export default async function getSingleProductRequest(
 ): Promise<ProductRequestBaseType | null> {
 	try {
 		await connectMongoose()
-		const feedback: ProductRequestBaseType | null =
-			await ProductRequestModel.findById(id)
+		const feedback: ProductRequestBaseType | null = await ProductRequestModel.findById(id)
 		return feedback
 	} catch (error) {
 		console.log("there was an error fetching the product request", error)
