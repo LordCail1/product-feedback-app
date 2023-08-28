@@ -13,6 +13,7 @@ const colors = {
     raven_night: "#373F68",
     singapore_orchid: "#AD1FEA",
     white: "#ffff",
+    blood_moon: "#D73737",
 }
 
 export default colors

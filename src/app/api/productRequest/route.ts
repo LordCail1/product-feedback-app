@@ -62,7 +62,6 @@ export async function POST(request: NextRequest) {
 }
 
 export async function PUT(request: NextRequest) {
-	
 	let res: ProductRequestModelType
 	try {
 		res = await request.json()
@@ -98,15 +97,19 @@ export async function PUT(request: NextRequest) {
 	}
 
 	const { category, description, status, title, _id } = res
-	
 
 	let productRequest: ProductRequestModelType | null
 
 	try {
-		await connectMongoose() 
-		productRequest = await ProductRequestModel.findById(_id) 
+		await connectMongoose()
+		productRequest = await ProductRequestModel.findById(_id)
 		if (!productRequest) {
-			return NextResponse.json({message: "failed to retrieve product request from the database."}, {status: 400})
+			return NextResponse.json(
+				{
+					message: "failed to retrieve product request from the database.",
+				},
+				{ status: 400 }
+			)
 		}
 		console.log(productRequest)
 		productRequest.title = title
@@ -114,15 +117,36 @@ export async function PUT(request: NextRequest) {
 		productRequest.description = description
 		productRequest.status = status
 		await productRequest.save()
-		return NextResponse.json({message: "success"}, {status: 200})
- 	}
-	catch(error) {
-		console.log("failed to retrieve product request from the database.", error)
+		return NextResponse.json({ message: "success" }, { status: 200 })
+	} catch (error) {
+		//localhost:3000/api/productRequest?id=testing
+		http: console.log(
+			"failed to retrieve product request from the database.",
+			error
+		)
 	}
+}
 
-	
-
-	
-
-
+export async function DELETE(request: NextRequest) {
+	let id: string | null
+	try {
+		const { searchParams } = new URL(request.url)
+		id = searchParams.get("id")
+	} catch (error) {
+		console.log(
+			"something went wrong extracting the search parameters",
+			error
+		)
+		return NextResponse.json(
+			{ message: "something went wrong" },
+			{ status: 400 }
+		)
+	}
+	try {
+		await connectMongoose()
+		const result = await ProductRequestModel.deleteOne({ _id: id })
+		return NextResponse.json({message: `Here is the result! ${result.acknowledged}`}, {status: 200})
+	} catch (error) {
+		return NextResponse.json({message: "something went wrong connecting to the database and deleting item"}, {status: 400})
+	}
 }

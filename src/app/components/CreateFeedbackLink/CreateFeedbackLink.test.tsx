@@ -9,7 +9,7 @@ describe("CreateFeedbackLink", () => {
 		render(<CreateFeedbackLink />)
 		const link = screen.getByRole("link")
 		expect(link).toBeInTheDocument()
-		expect(link).toHaveAttribute("href", "/createFeedback")
+		expect(link).toHaveAttribute("href", "/feedback")
 		const image = within(link).getByRole("img")
 		expect(image).toBeInTheDocument()
 	})

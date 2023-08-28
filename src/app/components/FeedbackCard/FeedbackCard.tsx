@@ -7,6 +7,7 @@ import Link from "next/link"
 import NumberCommentsIndicator from "../NumberCommentsIndicator/NumberCommentsIndicator"
 import React, { MouseEvent, useState, useTransition } from "react"
 import UpvoteBtn from "@/app/components/UpvoteBtn/UpvoteBtn"
+import { useToast } from "@/components/ui/use-toast"
 
 type Props = {
 	category: Category
@@ -29,7 +30,8 @@ export default function FeedbackCard({
 }: Props) {
 	const [isFetching, setIsFetching] = useState(false)
 	const [isPending, startTransition] = useTransition()
-	const router = useRouter()
+	const router = useRouter() 
+	const {toast} = useToast()
 
 	const isMutation = isFetching || isPending
 
@@ -44,8 +46,14 @@ export default function FeedbackCard({
 					"Content-Type": "application/json",
 				},
 			})
-			if (!res.ok) throw new Error("Something went wrong")
-			const data = await res.json()
+			if (!res.ok) {
+				toast({
+					title: "Something went wrong",
+					description: `Please try again later. status code: ${res.status}`,
+					variant: "destructive",	
+				})
+				throw new Error("Something went wrong")
+			}
 		} catch (error) {
 			console.log("something went wrong when sending the request", error)
 		}
@@ -57,7 +65,7 @@ export default function FeedbackCard({
 
 	return (
 		<Link
-			href={`/createFeedback/${id}`}
+			href={`/feedback/${id}`}
 			className="relative mx-6 mb-5 flex shrink-0 basis-52 cursor-pointer items-start rounded-xl bg-white transition-colors hover:bg-slate-50 md:mx-0 md:w-full md:basis-36"
 		>
 			<UpvoteBtn

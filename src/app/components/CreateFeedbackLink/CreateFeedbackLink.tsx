@@ -12,7 +12,7 @@ export default function CreateFeedbackLink() {
 			asChild
 			
 		>
-			<Link href="/createFeedback">
+			<Link href="/feedback">
 				<Image
 					src={IconPlus}
 					alt=""

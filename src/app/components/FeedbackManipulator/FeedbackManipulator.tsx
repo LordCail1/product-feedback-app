@@ -15,7 +15,8 @@ import IconNewFeedback from "@/assets/svg/IconNewFeedback.svg"
 import Image from "next/image"
 import Link from "next/link"
 import FeedbackUpdateStatusFormField from "./Fields/FeedbackUpdateStatusFormField/FeedbackUpdateStatusFormField"
-import { error } from "console"
+import { useState } from "react"
+import { useToast } from "@/components/ui/use-toast"
 
 type Props = {
 	editing: boolean
@@ -40,9 +41,7 @@ const CreateProductRequestFormSchema = z.object({
 		.string()
 		.min(1, "Can't be empty")
 		.max(500, "Can't be more than 500 characters!"),
-	feedbackStatus: z
-		.enum(["suggestion", "planned", "in-progress", "live"])
-		
+	feedbackStatus: z.enum(["suggestion", "planned", "in-progress", "live"]),
 })
 
 export default function FeedbackManipulator({
@@ -50,6 +49,8 @@ export default function FeedbackManipulator({
 	editing,
 }: Props) {
 	const router = useRouter()
+	const [isFetching, setIsFetching] = useState(false)
+	const { toast } = useToast()
 
 	const form = useForm<z.infer<typeof CreateProductRequestFormSchema>>({
 		resolver: zodResolver(CreateProductRequestFormSchema),
@@ -68,6 +69,7 @@ export default function FeedbackManipulator({
 	async function onSubmit(
 		data: z.infer<typeof CreateProductRequestFormSchema>
 	) {
+		setIsFetching(true)
 		try {
 			if (editing) {
 				if (
@@ -94,11 +96,18 @@ export default function FeedbackManipulator({
 							"Content-Type": "application/json",
 						},
 					})
-					const response = await res.json()
-					console.log(response)
-
-					if (!res.ok)
+					if (!res.ok) {
+						toast({
+							title: "Something went wrong!",
+							description: `Please try again later. status code: ${res.status}`,
+							variant: "destructive",
+						})
 						throw new Error("Something went wrong with the request")
+					}
+					toast({
+						title: "Success!",
+						description: "Your feedback has been updated",
+					})
 					router.push("/home")
 				} else {
 					throw new Error(
@@ -123,12 +132,55 @@ export default function FeedbackManipulator({
 					},
 				})
 
-				if (!res.ok) throw new Error("Something went wrong")
+				if (!res.ok) {
+					toast({
+						title: "Something went wrong!",
+						description: `Please try again later. status code: ${res.status}`,
+						variant: "destructive",
+					})
+					throw new Error("Something went wrong with the request")
+				}
+				toast({
+					title: "Success!",
+					description: "Your feedback has been added",
+				})
 				router.push("/home")
 			}
 		} catch (error) {
 			console.log("there was an error sending the data", error)
 		}
+		setIsFetching(false)
+	}
+
+	async function deleteProductRequest() {
+		setIsFetching(true)
+		try {
+			const res = await fetch(
+				`/api/productRequest?id=${feedbackEditingType?._id}`,
+				{
+					method: "DELETE",
+					headers: {
+						"Content-Type": "application/json",
+					},
+				}
+			)
+			if (!res.ok) {
+				toast({
+					title: "Something went wrong!",
+					description: `Please try again later. status code: ${res.status}`,
+					variant: "destructive",
+				})
+				throw new Error("Something went wrong with the request")
+			}
+		} catch (error) {
+			console.log("Something went wrong sending the DELETE request", error)
+		}
+		toast({
+			title: "Success!",
+			description: "Your feedback has been deleted",
+		})
+		setIsFetching(false)
+		router.push("/home")
 	}
 
 	return (
@@ -179,16 +231,29 @@ export default function FeedbackManipulator({
 					error={errors.feedbackDetail}
 				/>
 				<div className="mt-8 flex justify-end">
+					{editing ? (
+						<Button
+							className="mr-auto bg-blood_moon text-sm font-bold"
+							disabled={isFetching}
+							onClick={deleteProductRequest}
+							type="button"
+							variant={"destructive"}
+						>
+							Delete
+						</Button>
+					) : null}
 					<Button
-						type="button"
 						className="bg-jewel_cave text-sm font-bold hover:bg-ocean_night"
+						disabled={isFetching}
 						onClick={() => router.back()}
+						type="button"
 					>
 						Cancel
 					</Button>
 					<Button
-						type="submit"
 						className="ml-4 rounded-lg bg-singapore_orchid text-sm font-bold hover:bg-after_party_pink"
+						disabled={isFetching}
+						type="submit"
 					>
 						Add Feedback
 					</Button>
