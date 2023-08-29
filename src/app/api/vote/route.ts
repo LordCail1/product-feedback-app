@@ -1,7 +1,7 @@
-import connectMongoose from "@/lib/connectMongoose"
 import { NextRequest, NextResponse } from "next/server"
-import ProductRequestModel from "@/models/productRequestSchema"
 import { ProductRequestModelType } from "@/types"
+import connectMongoose from "@/lib/connectMongoose"
+import ProductRequestModel from "@/models/productRequestSchema"
 
 export async function PUT(request: NextRequest) {
 	let res: { id: string }

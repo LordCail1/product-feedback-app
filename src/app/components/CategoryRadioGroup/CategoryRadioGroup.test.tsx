@@ -1,4 +1,4 @@
-import { renderWithProviders } from "@/test/test-utils"
+import { renderWithProviders } from "@/test/utils/RenderWithProviders"
 import { render, screen } from "@testing-library/react"
 import CategoryRadioGroup from "./CategoryRadioGroup"
 import CategoryRadioGroupItem from "../CategoryRadioGroupItem/CategoryRadioGroupItem"

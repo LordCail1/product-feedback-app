@@ -31,7 +31,7 @@ type Props = {
 	}
 }
 
-const CreateProductRequestFormSchema = z.object({
+const ProductRequestFormSchema = z.object({
 	title: z
 		.string()
 		.min(1, "Can't be empty")
@@ -52,8 +52,8 @@ export default function FeedbackManipulator({
 	const [isFetching, setIsFetching] = useState(false)
 	const { toast } = useToast()
 
-	const form = useForm<z.infer<typeof CreateProductRequestFormSchema>>({
-		resolver: zodResolver(CreateProductRequestFormSchema),
+	const form = useForm<z.infer<typeof ProductRequestFormSchema>>({
+		resolver: zodResolver(ProductRequestFormSchema),
 		defaultValues: {
 			title: editing ? feedbackEditingType?.title : "",
 			category: editing ? feedbackEditingType?.category : "feature",
@@ -67,7 +67,7 @@ export default function FeedbackManipulator({
 	} = form
 
 	async function onSubmit(
-		data: z.infer<typeof CreateProductRequestFormSchema>
+		data: z.infer<typeof ProductRequestFormSchema>
 	) {
 		setIsFetching(true)
 		try {

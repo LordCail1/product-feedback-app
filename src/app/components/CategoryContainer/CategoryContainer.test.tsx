@@ -1,7 +1,6 @@
-import { renderWithProviders } from "@/test/test-utils"
+import { renderWithProviders } from "@/test/utils/RenderWithProviders"
 import { screen } from "@testing-library/react"
 import CategoryContainer from "@/app/components/CategoryContainer/CategoryContainer"
-import CategoryRadioGroup from "../CategoryRadioGroup/CategoryRadioGroup"
 
 describe("CategoryContainer", () => {
 	test("renders all CategoryRadioGroupItems", () => {

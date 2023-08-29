@@ -1,7 +1,7 @@
 /* eslint-disable testing-library/no-await-sync-events */
 import { screen, waitFor } from "@testing-library/react"
 import CategoryRadioGroupItem from "./CategoryRadioGroupItem"
-import { renderWithProviders } from "@/test/test-utils"
+import { renderWithProviders } from "@/test/utils/RenderWithProviders"
 import { RadioGroup } from "@radix-ui/react-radio-group"
 import userEvent from "@testing-library/user-event"
 import { act } from "react-dom/test-utils"

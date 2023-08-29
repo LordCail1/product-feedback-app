@@ -28,16 +28,12 @@ export default function FeedbackCard({
 	title,
 	upVotes,
 }: Props) {
-	const [isFetching, setIsFetching] = useState(false)
 	const [isPending, startTransition] = useTransition()
 	const router = useRouter() 
 	const {toast} = useToast()
 
-	const isMutation = isFetching || isPending
-
 	async function handleUpvote(e: MouseEvent<HTMLButtonElement>) {
 		e.preventDefault()
-		setIsFetching(true)
 		try {
 			const res = await fetch(`/api/vote`, {
 				method: "PUT",
@@ -57,7 +53,6 @@ export default function FeedbackCard({
 		} catch (error) {
 			console.log("something went wrong when sending the request", error)
 		}
-		setIsFetching(false)
 		startTransition(() => {
 			router.refresh()
 		})

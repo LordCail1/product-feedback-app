@@ -3,6 +3,7 @@ import { render, RenderOptions } from "@testing-library/react"
 import { PreloadedState } from "@reduxjs/toolkit"
 import { Provider } from "react-redux"
 import { AppStore, RootState, setupStore } from "@/store/store"
+import { NextRouter } from "next/router"
 
 interface ExtendedRenderOptions extends Omit<RenderOptions, "queries"> {
 	preloadedState?: PreloadedState<RootState>
@@ -19,3 +20,4 @@ export function renderWithProviders(ui: React.ReactElement,{preloadedState = {},
 	}
 	return { store, ...render(ui, { wrapper: Wrapper, ...renderOptions }) }
 }
+
