@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { Form } from "@/components/ui/form"
-import { Category, ProductRequestBaseType, Status } from "@/types"
+import { Category, FeedbackEditingType, ProductRequestBaseType, Status } from "@/types"
 import { useForm } from "react-hook-form"
 import { useRouter } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -20,15 +20,7 @@ import { useToast } from "@/components/ui/use-toast"
 
 type Props = {
 	editing: boolean
-	feedbackEditingType?: {
-		_id: string
-		title: string
-		category: Category
-		status: Status
-		description: string
-		upvotes: number
-		hasBeenUpvoted: boolean
-	}
+	feedbackEditingType?: FeedbackEditingType
 }
 
 const ProductRequestFormSchema = z.object({
@@ -207,7 +199,7 @@ export default function FeedbackManipulator({
 					</span>
 				</Link>
 				<h1 className="pb-10 pt-12 text-2xl font-bold">
-					Create New Feedback
+					{editing ? "Edit Feedback" : "Create New Feedback"}
 				</h1>
 				<FeedbackTitleFormField
 					control={form}
@@ -255,7 +247,7 @@ export default function FeedbackManipulator({
 						disabled={isFetching}
 						type="submit"
 					>
-						Add Feedback
+						{editing ? "Update Feedback" : "Add Feedback"}
 					</Button>
 				</div>
 			</form>

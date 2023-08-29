@@ -88,3 +88,13 @@ export interface UserBaseType {
 export interface UserModelType extends UserBaseType, Document {
 	_id: Types.ObjectId
 }
+
+export type FeedbackEditingType = {
+	_id: string
+	title: string
+	category: Category
+	status: Status
+	description: string
+	upvotes: number
+	hasBeenUpvoted: boolean
+}

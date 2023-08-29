@@ -119,8 +119,7 @@ export async function PUT(request: NextRequest) {
 		await productRequest.save()
 		return NextResponse.json({ message: "success" }, { status: 200 })
 	} catch (error) {
-		//localhost:3000/api/productRequest?id=testing
-		http: console.log(
+		console.log(
 			"failed to retrieve product request from the database.",
 			error
 		)
