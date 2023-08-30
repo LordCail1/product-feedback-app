@@ -2,13 +2,29 @@
 /* eslint-disable testing-library/no-debugging-utils */
 /* eslint-disable testing-library/no-container */
 /* eslint-disable testing-library/no-node-access */
-import { render, screen, within } from "@testing-library/react"
+import { render, screen, waitFor, within } from "@testing-library/react"
 import FeedbackManipulator from "./FeedbackManipulator"
 import { debug } from "jest-preview"
 import { FeedbackEditingType } from "@/types"
 import userEvent from "@testing-library/user-event"
+import { useRouter } from "next/navigation"
+import { useToast } from "@/components/ui/use-toast"
+import ReduxProvider from "@/providers/ReduxProvider"
+import { Toaster } from "@/components/ui/toaster"
+import { setupServer } from "msw/node"
+import { rest } from "msw"
 
-jest.mock("next/navigation")
+const useRouterPush = jest.fn()
+
+jest.mock("next/navigation", () => ({
+	useRouter() {
+		return {
+			push: useRouterPush,
+		}
+	},
+}))
+
+const server = setupServer()
 
 describe("FeedbackManipulator", () => {
 	const feedbackEditingType: FeedbackEditingType = {
@@ -20,6 +36,10 @@ describe("FeedbackManipulator", () => {
 		title: "Test Title",
 		upvotes: 0,
 	}
+
+	/**
+	 * Unit Tests
+	 */
 	describe("individual elements should render correctly - {editing=false}", () => {
 		test("Image tags", () => {
 			render(<FeedbackManipulator editing={false} />)
@@ -422,33 +442,110 @@ describe("FeedbackManipulator", () => {
 	})
 	describe("Form Validation", () => {
 		describe("Fields should be disabled", () => {
-			test("FeedbackTitle can't be empty", async () => {
+			test("if you try submitting with empty forms", async () => {
 				render(<FeedbackManipulator editing={false} />)
 				const feedbackTitleInput = screen.getByLabelText(/feedback title/i)
-				const feedbackDetailTextArea = screen.getByLabelText(/feedback detail/i)
+				const feedbackDetailTextArea =
+					screen.getByLabelText(/feedback detail/i)
 				const submitBtn = screen.getByRole("button", {
 					name: /add feedback/i,
 				})
 				expect(feedbackTitleInput).toHaveAttribute("aria-invalid", "false")
-				expect(feedbackDetailTextArea).toHaveAttribute("aria-invalid", "false")
+				expect(feedbackDetailTextArea).toHaveAttribute(
+					"aria-invalid",
+					"false"
+				)
 				await userEvent.click(submitBtn)
 				expect(feedbackTitleInput).toHaveAttribute("aria-invalid", "true")
-				expect(feedbackDetailTextArea).toHaveAttribute("aria-invalid", "true")
+				expect(feedbackDetailTextArea).toHaveAttribute(
+					"aria-invalid",
+					"true"
+				)
 			})
-		})
-		describe("Form Submission", () => {
-			test("should submit", async () => {
+			test("if you try submitting with form values that are too long", async () => {
 				render(<FeedbackManipulator editing={false} />)
 				const feedbackTitleInput = screen.getByLabelText(/feedback title/i)
-				const feedbackDetailTextArea = screen.getByLabelText(/feedback detail/i)
+				const feedbackDetailTextArea =
+					screen.getByLabelText(/feedback detail/i)
+				const submitBtn = screen.getByRole("button", {
+					name: /add feedback/i,
+				})
+				await userEvent.type(
+					feedbackTitleInput,
+					"Lorem ipsum dolor sit amet consectetur adipisicing elit"
+				)
+				await userEvent.type(
+					feedbackDetailTextArea,
+					`Step-by-Step GuideMock API Calls: Use jest.mock() to mock the fetch API calls that your onSubmit function mak					Mock Routing: Since you're using Next.js's useRouter, you'll also need to mock this to test if the page is being es. This allows you to simulate both successful and unsuccessful API responses.
+					User Interaction: Use userEvent to simulate user interactions like filling in the form and clicking the submit button.
+					Assertions: Finally, make assertions to check if the expected behavior is met. This can include checking if the mock API was called, if the toast was displayed, and if the router navigated to the correct page.
+					Here's some sample code to give you an idea:
+					javascript`
+				)
+				expect(feedbackTitleInput).toHaveAttribute("aria-invalid", "false")
+				expect(feedbackDetailTextArea).toHaveAttribute(
+					"aria-invalid",
+					"false"
+				)
+				await userEvent.click(submitBtn)
+				expect(feedbackTitleInput).toHaveAttribute("aria-invalid", "true")
+				expect(feedbackDetailTextArea).toHaveAttribute(
+					"aria-invalid",
+					"true"
+				)
+			})
+		})
+	})
+
+	/**
+	 * Intergration Tests
+	 */
+	describe.only("Form Submission", () => {
+		const server = setupServer(
+			rest.post(
+				"http://localhost:3000/api/productRequest",
+				(req, res, ctx) => {
+					return res(ctx.status(400)) // Your new handler
+				}
+			)
+		)
+
+		// Before all tests, start the server
+		beforeAll(() => server.listen())
+
+		// After each test, reset any runtime request handlers
+		afterEach(() => server.resetHandlers())
+
+		// After all tests, stop the server
+		afterAll(() => server.close())
+		describe("Editing = true", () => {
+			test("form submits and shows 'Success' toast upon successful API call", async () => {
+				render(
+					<body className="h-screen w-screen overflow-x-hidden bg-ghost_white">
+						<ReduxProvider>
+							<section className="relative h-screen">
+								<FeedbackManipulator editing={false} />
+							</section>
+							<Toaster />
+						</ReduxProvider>
+					</body>
+				)
+				const feedbackTitleInput = screen.getByLabelText(/feedback title/i)
+				const feedbackDetailTextArea =
+					screen.getByLabelText(/feedback detail/i)
 				const submitBtn = screen.getByRole("button", {
 					name: /add feedback/i,
 				})
 				await userEvent.type(feedbackTitleInput, "Test Title")
 				await userEvent.type(feedbackDetailTextArea, "Test Description")
 				await userEvent.click(submitBtn)
+				await waitFor(() => {
+					expect(useRouterPush).toHaveBeenCalledWith("/home")
+				})
+				const toast = screen.getByRole("region")
+				expect(toast).toBeInTheDocument()
+				debug()
 			})
-			
 		})
 	})
 })

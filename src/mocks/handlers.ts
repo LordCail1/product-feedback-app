@@ -7,4 +7,9 @@ export const handlers = [
             ctx.status(200)
         )
     }),
+    rest.get('/home', (req, res, ctx) => {
+        return res(
+            ctx.json({message: "success"}),
+        )
+    })
 ]
