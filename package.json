@@ -7,9 +7,9 @@
     "build": "next build",
     "start": "next start",
     "test": "jest",
-    "test:watch": "jest --watch",
+    "test:watch": "DEBUG_PRINT_LIMIT=100000 jest --watch",
     "test:watchAll": "jest --watchAll",
-    "jestClearCache":"jest --clearCache",
+    "jestClearCache": "jest --clearCache",
     "jestPreview": "jest-preview",
     "test:coverage": "jest --coverage",
     "docker:devUp": "./development.sh",
@@ -65,6 +65,6 @@
     "prettier": "2.8",
     "prettier-plugin-tailwindcss": "^0.4.1",
     "ts-jest": "^29.1.1",
-    "whatwg-fetch": "^3.6.17"
+    "whatwg-fetch": "^3.6.18"
   }
 }

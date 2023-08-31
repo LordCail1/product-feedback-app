@@ -7,12 +7,14 @@ import FeedbackManipulator from "./FeedbackManipulator"
 import { debug } from "jest-preview"
 import { FeedbackEditingType } from "@/types"
 import userEvent from "@testing-library/user-event"
-import { useRouter } from "next/navigation"
-import { useToast } from "@/components/ui/use-toast"
 import ReduxProvider from "@/providers/ReduxProvider"
 import { Toaster } from "@/components/ui/toaster"
-import { setupServer } from "msw/node"
 import { rest } from "msw"
+import { server } from "@/mocks/server"
+import {
+	clearListeners,
+	resetMemoryState,
+} from "@/components/ui/use-toast"
 
 const useRouterPush = jest.fn()
 
@@ -24,7 +26,11 @@ jest.mock("next/navigation", () => ({
 	},
 }))
 
-const server = setupServer()
+beforeEach(() => {
+	jest.resetAllMocks()
+	resetMemoryState()
+	clearListeners()
+})
 
 describe("FeedbackManipulator", () => {
 	const feedbackEditingType: FeedbackEditingType = {
@@ -500,35 +506,16 @@ describe("FeedbackManipulator", () => {
 	/**
 	 * Intergration Tests
 	 */
-	describe.only("Form Submission", () => {
-		const server = setupServer(
-			rest.post(
-				"http://localhost:3000/api/productRequest",
-				(req, res, ctx) => {
-					return res(ctx.status(400)) // Your new handler
-				}
-			)
-		)
-
-		// Before all tests, start the server
-		beforeAll(() => server.listen())
-
-		// After each test, reset any runtime request handlers
-		afterEach(() => server.resetHandlers())
-
-		// After all tests, stop the server
-		afterAll(() => server.close())
-		describe("Editing = true", () => {
+	describe("Form Submission", () => {
+		describe("Editing = false", () => {
 			test("form submits and shows 'Success' toast upon successful API call", async () => {
 				render(
-					<body className="h-screen w-screen overflow-x-hidden bg-ghost_white">
-						<ReduxProvider>
-							<section className="relative h-screen">
-								<FeedbackManipulator editing={false} />
-							</section>
-							<Toaster />
-						</ReduxProvider>
-					</body>
+					<ReduxProvider>
+						<section className="relative h-screen">
+							<FeedbackManipulator editing={false} />
+						</section>
+						<Toaster />
+					</ReduxProvider>
 				)
 				const feedbackTitleInput = screen.getByLabelText(/feedback title/i)
 				const feedbackDetailTextArea =
@@ -536,15 +523,99 @@ describe("FeedbackManipulator", () => {
 				const submitBtn = screen.getByRole("button", {
 					name: /add feedback/i,
 				})
+
 				await userEvent.type(feedbackTitleInput, "Test Title")
 				await userEvent.type(feedbackDetailTextArea, "Test Description")
 				await userEvent.click(submitBtn)
 				await waitFor(() => {
 					expect(useRouterPush).toHaveBeenCalledWith("/home")
 				})
-				const toast = screen.getByRole("region")
+				const toast = await screen.findByRole("region")
 				expect(toast).toBeInTheDocument()
-				debug()
+			})
+			test("form submits and shows 'Error' toast upon unsuccessful API call", async () => {
+				server.use(
+					rest.post("/api/productRequest", (req, res, ctx) => {
+						return res(ctx.status(400))
+					})
+				)
+				render(
+					<ReduxProvider>
+						<section className="relative h-screen">
+							<FeedbackManipulator editing={false} />
+						</section>
+						<Toaster />
+					</ReduxProvider>
+				)
+				const feedbackTitleInput = screen.getByLabelText(/feedback title/i)
+				const feedbackDetailTextArea =
+					screen.getByLabelText(/feedback detail/i)
+				const submitBtn = screen.getByRole("button", {
+					name: /add feedback/i,
+				})
+
+				await userEvent.type(feedbackTitleInput, "Test Title")
+				await userEvent.type(feedbackDetailTextArea, "Test Description")
+				await userEvent.click(submitBtn)
+				await waitFor(() => {
+					expect(useRouterPush).not.toHaveBeenCalled()
+				})
+				const toast = await screen.findByText(/something went wrong/i)
+				expect(toast).toBeInTheDocument()
+			})
+		})
+		describe("Editing = true", () => {
+			test("form submits and shows 'Success' toast upon successful API call", async () => {
+				render(
+					<ReduxProvider>
+						<section className="relative h-screen">
+							<FeedbackManipulator
+								editing={true}
+								feedbackEditingType={feedbackEditingType}
+							/>
+						</section>
+						<Toaster />
+					</ReduxProvider>
+				)
+				const submitBtn = screen.getByRole("button", {
+					name: /Update Feedback/i,
+				})
+				await userEvent.click(submitBtn)
+				const toast = await screen.findByRole("region")
+				await waitFor(() => {
+					expect(useRouterPush).toHaveBeenCalledWith("/home")
+				})
+				expect(toast).toBeInTheDocument()
+			})
+			test("form submits and shows 'Error' toast upon unsuccessful API call", async () => {
+				server.use(
+					rest.put("/api/productRequest", (req, res, ctx) => {
+						return res(ctx.status(400))
+					})
+				)
+				render(
+					<ReduxProvider>
+						<section className="relative h-screen">
+							<FeedbackManipulator
+								editing={true}
+								feedbackEditingType={feedbackEditingType}
+							/>
+						</section>
+						<Toaster />
+					</ReduxProvider>
+				)
+				const feedbackTitleInput = screen.getByLabelText(/feedback title/i)
+				const feedbackDetailTextArea =
+					screen.getByLabelText(/feedback detail/i)
+				const submitBtn = screen.getByRole("button", {
+					name: /Update Feedback/i,
+				})
+				await userEvent.click(submitBtn)
+				await waitFor(() => {
+					expect(useRouterPush).not.toHaveBeenCalled()
+				})
+				const toast = await screen.findByRole("region")
+				expect(toast).toBeInTheDocument()
 			})
 		})
 	})

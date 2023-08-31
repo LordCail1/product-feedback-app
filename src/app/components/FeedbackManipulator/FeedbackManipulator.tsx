@@ -1,22 +1,22 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
+import { FeedbackEditingType, ProductRequestBaseType } from "@/types"
 import { Form } from "@/components/ui/form"
-import { Category, FeedbackEditingType, ProductRequestBaseType, Status } from "@/types"
 import { useForm } from "react-hook-form"
 import { useRouter } from "next/navigation"
+import { useState } from "react"
+import { useToast } from "@/components/ui/use-toast"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import FeedbackCategoryFormField from "@/app/components/FeedbackManipulator/Fields/FeedbackCategoryFormField/FeedbackCategoryFormField"
 import FeedbackDetailFormField from "@/app/components/FeedbackManipulator/Fields/FeedbackDetailFormField/FeedbackDetailFormField"
 import FeedbackTitleFormField from "@/app/components/FeedbackManipulator/Fields/FeedbackTitleFormField/FeedbackTitleFormField"
+import FeedbackUpdateStatusFormField from "./Fields/FeedbackUpdateStatusFormField/FeedbackUpdateStatusFormField"
 import IconArrowLeft from "@/assets/svg/IconArrowLeft.svg"
 import IconNewFeedback from "@/assets/svg/IconNewFeedback.svg"
 import Image from "next/image"
 import Link from "next/link"
-import FeedbackUpdateStatusFormField from "./Fields/FeedbackUpdateStatusFormField/FeedbackUpdateStatusFormField"
-import { useState } from "react"
-import { useToast } from "@/components/ui/use-toast"
 
 type Props = {
 	editing: boolean
@@ -58,9 +58,7 @@ export default function FeedbackManipulator({
 		formState: { errors },
 	} = form
 
-	async function onSubmit(
-		data: z.infer<typeof ProductRequestFormSchema>
-	) {
+	async function onSubmit(data: z.infer<typeof ProductRequestFormSchema>) {
 		setIsFetching(true)
 		try {
 			if (editing) {
@@ -69,7 +67,6 @@ export default function FeedbackManipulator({
 					feedbackEditingType?.category &&
 					feedbackEditingType?.status &&
 					feedbackEditingType?.description &&
-					feedbackEditingType?.upvotes &&
 					feedbackEditingType._id
 				) {
 					const body: ProductRequestBaseType = {

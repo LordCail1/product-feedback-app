@@ -189,4 +189,21 @@ function useToast() {
   }
 }
 
+
+
+// Utility function to reset state
+export function resetMemoryState() {
+  memoryState = { toasts: [] };
+}
+
+// Utility function to clear listeners
+export function clearListeners() {
+  listeners.length = 0;
+}
+
+// Existing reducer, dispatch, toast, and useToast functions...
+
+
+
+
 export { useToast, toast }
